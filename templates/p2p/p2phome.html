@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+/* Start style.css  */
+* {
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    color: #888;
+    background: white;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+/* Start HR TAG */
+hr.new1 {
+  border-top: 1px solid red;
+}
+/* END HR TAG */
+/* Start Logo Menu */
+
+.navbarlogo {
+    overflow: hidden;
+    background-color:#f2f2f2;
+}
+
+.brandlogo .brandlogolink {
+    overflow: hidden;
+    background-color:#f2f2f2;
+    float: left;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    padding: 22px 30px;
+    text-decoration: none;
+}
+
+
+
+.navbarlogo .navbarlogolink {
+    float: right;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    padding: 22px 30px;
+    text-decoration: none;
+}
+
+/* End Logo Menu */
+/* Start Buttons */
+.signupbutton{
+    float: right;
+    overflow: hidden;
+    font-size: 11px;
+    color: #333;
+    text-align: center;
+    padding: 6px 20px;
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    background-color: white;
+    border: 1px solid #008CBA;
+    margin : 15px;
+
+}
+
+.signupbutton:hover {
+  background-color: #008CBA;
+  color: white;
+}
+/* End Buttons */
+/* Start Menu Nav Bar second menu */
+
+
+.navbarmenu {
+    overflow: hidden;
+    background-color:#f2f2f2;
+}
+
+.navbarmenu .navbarmenulink {
+    float: left;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    padding: 22px 30px;
+    text-decoration: none;
+}
+
+.menudropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.menudropdown .menudropbtn {
+    font-size: 12px;
+    border: none;
+    outline: none;
+    color:#333;
+    padding: 22px 30px;
+    background-color: inherit;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+}
+
+.menudropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menudropdown-content .menudropdownlink {
+    float: none;
+    font-size: 12px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.menudropdown-content .menudropdownlink:hover {
+    background-color:#e6eeff;
+}
+
+.menudropdown:hover .menudropdown-content {
+    display: block;
+}
+/* End Menu Nav Bar second menu */
+/* End style.css */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  text-align: center;
+}
+.flex-item-sidemenu {
+  /* background-color: #f1f1f1; */
+  padding: 10px;
+  flex: 20%;
+}
+
+.flex-item-constanttable {
+  /* background-color: #f1f1f1; */
+  padding: 10px;
+  flex: 80%;
+}
+
+.flex-item-eventtable{
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 40%;
+}
+
+.flex-item-housetable {
+  /* background-color: #f1f1f1; */
+  padding: 50px;
+  flex: 80%;
+}
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+/* Start EVENT Table ONE*/
+.eventtable {
+    font-family: 'Noto Sans JP', sans-doubtsserif;
+    font-size: 14px;
+    width: 90%;
+    color: black;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-top : 50px;
+    margin-bottom : 50px;
+  }
+
+.eventtd{
+    border: 1px solid  #b3b3b3;
+    text-align: center;
+    padding: 8px;
+}
+
+
+.eventth {
+    padding: 8px;
+    border: 1px solid  #b3b3b3;
+    text-align: center;
+}
+
+
+
+.eveonetr:nth-child(even) {
+    background-color: #cce0ff;
+}
+
+.evetwotr:nth-child(even) {
+    background-color: #ffddcc;
+}
+
+/* End EVENT Table ONE*/
+/* Start HOUSE Table */
+.housetable {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    width: 90%;
+    color: black;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-top : 50px;
+    margin-bottom : 50px;
+  }
+
+.houseth {
+    padding: 8px;
+    border: 1px solid  #dddddd;
+    text-align: center;
+}
+
+
+
+.housetd{
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    padding: 8px;
+    text-align: center;
+
+}
+.housetdorange {
+  border: 1px solid #A9A9A9;
+  border-collapse: collapse;
+  padding: 8px;
+  background-color: #ffbf80;
+  text-align: center;
+}
+
+.housetr:nth-child(even) {
+    background-color: #e6f0ff;
+}
+
+/* End HOUSE Table */
+/* Start CONSTANT Table */
+.constanttable {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    width: 90%;
+    color: black;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-top : 50px;
+    margin-bottom : 50px;
+  }
+
+.constanttd{
+    border: 1px solid  #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+
+.constantth {
+    padding: 8px;
+    border: 1px solid  #dddddd;
+    text-align: center;
+}
+
+
+
+tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+.conjtr:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+.tr180:nth-child(even) {
+    background-color: #f2e6ff;
+}
+
+.tr120l:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+.tr120g:nth-child(even) {
+    background-color: #f2e6ff;
+}
+
+.tr90l:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+.tr90g:nth-child(even) {
+    background-color: #f2e6ff;
+}
+
+.tr60l:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+.tr60g:nth-child(even) {
+    background-color: #f2e6ff;
+}
+
+.tr150g:nth-child(even) {
+    background-color: #ffd6cc;
+}
+
+/* End CONSTANT Table */
+/* H2 TITLE STYLE */
+.titleh2 {
+  display: block;
+  font-size: 1.8em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align:center;
+}
+/* H2 TITLE END */
+/* H3 TITLE STYLE */
+.titleh3 {
+  display: block;
+  font-size: 1.2em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align:center;
+}
+/* H3 TITLE END */
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 40%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 15%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 15%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+    <!-- NAVBAR START-->
+    <div class="brandlogo">
+        <a class="brandlogolink" href="#!">Logo</a>
+    </div>
+    <div class="navbarlogo">
+        <a class="navbarlogolink" href="#">.</a>
+        <a class="signupbutton" href="#news">SIGNUP</a>
+        <a class="signupbutton" href="#news">LOGIN</a>
+    </div>
+    <div class="navbarmenu">
+        <a class="navbarmenulink" href="{% url 'p2phome' %}">P1vsP1</a>
+        <a class="navbarmenulink" href="{% url 'p1home' %}">P1 pxp</a>
+        <a class="navbarmenulink" href="{% url 'p1xp2exform' %}">P1xP2 Exact</a>
+        <a class="navbarmenulink" href="{% url 'axhome' %}">Ax Report</a>
+<!--        <div class="menudropdown">-->
+<!--            <button class="menudropbtn">Charts-->
+<!--                <i class="fa fa-caret-down"></i>-->
+<!--            </button>-->
+<!--            <div class="menudropdown-content">-->
+<!--                <a class="menudropdownlink" href="#">Person 2 Person</a>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    <!-- NAVBAR ENDS -->
+
+    <div class="flex-container">
+    <div class="flex-item-sidemenu">
+    <form method="post">
+        {% csrf_token %}
+        <h3>Person 1</h3>
+        <label for="fname">Su Degree:</label>
+        <input type="text" id="fname" name="Su_Conc_p1" value="{{p1_su_degree}}"><br><br>
+
+        <label for="Mo_Conc">Mo Degree:</label>
+        <input type="text" id="Mo_Conc" name="Mo_Conc_p1" value="{{p1_mo_degree}}" ><br><br>
+
+        <label for="Me_Conc">Me Degree:</label>
+        <input type="text" id="Me_Conc" name="Me_Conc_p1" value="{{p1_me_degree}}"><br><br>
+
+
+        <label for="Ma_Conc">Ma Degree:</label>
+        <input type="text" id="Ma_Conc" name="Ma_Conc_p1" value="{{p1_ma_degree}}"><br><br>
+
+        <label for="Ju_Conc">Ju Degree:</label>
+        <input type="text" id="Ju_Conc" name="Ju_Conc_p1" value="{{p1_ju_degree}}"><br><br>
+
+        <label for="Ve_Conc">Ve Degree:</label>
+        <input type="text" id="Ve_Conc" name="Ve_Conc_p1" value="{{p1_ve_degree}}"><br><br>
+
+
+        <label for="Sa_Conc">Sa Degree:</label>
+        <input type="text" id="Sa_Conc" name="Sa_Conc_p1" value="{{p1_sa_degree}}"><br><br>
+
+        <label for="Ra_Conc">Ra Degree:</label>
+        <input type="text" id="Ra_Conc" name="Ra_Conc_p1" value="{{p1_ra_degree}}"><br><br>
+
+        <label for="Ke_Conc">Ke Degree:</label>
+        <input type="text" id="Ke_Conc" name="Ke_Conc_p1" value="{{p1_ke_degree}}"><br><br>
+
+        <label for="As_Conc">As Degree:</label>
+        <input type="text" id="As_Conc" name="As_Conc_p1" value="{{p1_as_degree}}"><br><br>
+        </div>
+        <div class="flex-item-sidemenu">
+             <h3>Person 2</h3>
+<label for="fname_2">Su Degree:</label>
+  <input type="text" id="fname_2" name="Su_Conc_p2" value="{{p2_su_degree}}"><br><br>
+
+  <label for="Mo_Conc_2">Mo Degree:</label>
+  <input type="text" id="Mo_Conc_2" name="Mo_Conc_p2" value="{{p2_mo_degree}}" ><br><br>
+
+  <label for="Me_Conc_2">Me Degree:</label>
+  <input type="text" id="Me_Conc_2" name="Me_Conc_p2" value="{{p2_me_degree}}"><br><br>
+
+
+  <label for="Ma_Conc_2">Ma Degree:</label>
+  <input type="text" id="Ma_Conc_2" name="Ma_Conc_p2" value="{{p2_ma_degree}}"><br><br>
+
+  <label for="Ju_Conc_2">Ju Degree:</label>
+  <input type="text" id="Ju_Conc_2" name="Ju_Conc_p2" value="{{p2_ju_degree}}"><br><br>
+
+  <label for="Ve_Conc_2">Ve Degree:</label>
+  <input type="text" id="Ve_Conc_2" name="Ve_Conc_p2" value="{{p2_ve_degree}}"><br><br>
+
+
+  <label for="Sa_Conc_2">Sa Degree:</label>
+  <input type="text" id="Sa_Conc_2" name="Sa_Conc_p2" value="{{p2_sa_degree}}"><br><br>
+
+  <label for="Ra_Conc_2">Ra Degree:</label>
+  <input type="text" id="Ra_Conc_2" name="Ra_Conc_p2" value="{{p2_ra_degree}}"><br><br>
+
+  <label for="Ke_Conc_2">Ke Degree:</label>
+  <input type="text" id="Ke_Conc_2" name="Ke_Conc_p2" value="{{p2_ke_degree}}"><br><br>
+
+  <label for="As_Conc_2">As Degree:</label>
+  <input type="text" id="As_Conc_2" name="As_Conc_p2" value="{{p2_as_degree}}"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+</div>
+</div>
+    {% if eve_person_one %}
+    <h2 class="titleh2">PERSON 1 VS PERSON 2</h2>
+    <hr class="new1">
+    <div class="flex-container">
+        <div class="flex-item-sidemenu">
+          1
+        </div>
+        <div class="flex-item-eventtable">
+            <div align="center">
+                <h3 class="titleh3">EVENT PERSON 1</h3>
+                <table class="eventtable">
+                    <tr class="eveonetr">
+                        <th class="eventth">PLANET</th>
+                        <th class="eventth">SIGN NO</th>
+                        <th class="eventth">SIGN NAME</th>
+                        <th class="eventth">DEGREE</th>
+                    </tr>
+                    {% for i in eve_person_one %}
+                    <tr class="eveonetr">
+                        <td class="eventtd">{{i.planet}}</td>
+                        <td class="eventtd">{{i.sign_num}}</td>
+                        <td class="eventtd">{{i.sign_name}}</td>
+                        <td class="eventtd">{{i.degree}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="flex-item-eventtable">
+            <div align="center">
+                <h3 class="titleh3">EVENT PERSON 2</h3>
+                <table class="eventtable">
+                    <tr class="evetwotr">
+                        <th class="eventth">PLANET</th>
+                        <th class="eventth">SIGN NO</th>
+                        <th class="eventth">SIGN NAME</th>
+                        <th class="eventth">DEGREE</th>
+                    </tr>
+                    {% for i in eve_person_two %}
+                    <tr class="evetwotr">
+                        <td class="eventtd">{{i.planet}}</td>
+                        <td class="eventtd">{{i.sign_num}}</td>
+                        <td class="eventtd">{{i.sign_name}}</td>
+                        <td class="eventtd">{{i.degree}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+          <div class="flex-item-housetable">
+                <div align="center">
+                    <h3>HOUSES</h3>
+                    <table class="housetable">
+                          <tr class="housetr">
+                                <th class="houseth">SIGN NAME</th>
+                                <th class="houseth">H1</th>
+                                <th class="houseth">H2</th>
+                                <th class="houseth">H3</th>
+                                <th class="houseth">H4</th>
+                                <th class="houseth">H5</th>
+                                <th class="houseth">H6</th>
+                                <th class="houseth">H7</th>
+                                <th class="houseth">H8</th>
+                                <th class="houseth">H9</th>
+                                <th class="houseth">H10</th>
+                                <th class="houseth">H11</th>
+                                <th class="houseth">H12</th>
+                          </tr>
+                          {% for i in house_df %}
+                              <tr class="housetr">
+                                  <td class="housetd">{{i.sign_name}}</td>
+                                  {% if i.H1 == 1 %}
+                                  <td class="housetdorange">{{i.H1}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H1}}</td>
+                                  {% endif %}
+
+                                  {% if i.H2 == 1 %}
+                                  <td class="housetdorange">{{i.H2}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H2}}</td>
+                                  {% endif %}
+
+                                  {% if i.H3 == 1 %}
+                                  <td class="housetdorange">{{i.H3}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H3}}</td>
+                                  {% endif %}
+
+                                  {% if i.H4 == 1 %}
+                                  <td class="housetdorange">{{i.H4}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H4}}</td>
+                                  {% endif %}
+
+                                  {% if i.H5 == 1 %}
+                                  <td class="housetdorange">{{i.H5}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H5}}</td>
+                                  {% endif %}
+
+                                  {% if i.H6 == 1 %}
+                                  <td class="housetdorange">{{i.H6}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H6}}</td>
+                                  {% endif %}
+
+                                  {% if i.H7 == 1 %}
+                                  <td class="housetdorange">{{i.H7}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H7}}</td>
+                                  {% endif %}
+
+                                  {% if i.H8 == 1 %}
+                                  <td class="housetdorange">{{i.H8}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H8}}</td>
+                                  {% endif %}
+
+                                  {% if i.H9 == 1 %}
+                                  <td class="housetdorange">{{i.H9}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H9}}</td>
+                                  {% endif %}
+
+                                  {% if i.H10 == 1 %}
+                                  <td class="housetdorange">{{i.H10}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H10}}</td>
+                                  {% endif %}
+
+                                  {% if i.H11 == 1 %}
+                                  <td class="housetdorange">{{i.H11}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H11}}</td>
+                                  {% endif %}
+
+                                  {% if i.H12 == 1 %}
+                                  <td class="housetdorange">{{i.H12}}</td>
+                                  {% else %}
+                                  <td class="housetd">{{i.H12}}</td>
+                                  {% endif %}
+                              </tr>
+                          {% endfor %}
+                    </table>
+                </div>
+          </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-eventtable">
+            <div align="center">
+                <h3 class="titleh3">HOUSE AND ITS SIGNS</h3>
+                <table class="eventtable">
+                    <tr class="eveonetr">
+                        <th class="eventth">House No</th>
+                        <th class="eventth">Sign Name</th>
+                        <th class="eventth">Sign Num</th>
+                    </tr>
+                    {% for i in house_sign_df %}
+                    <tr class="eveonetr">
+                        <td class="eventtd">{{i.house_num}}</td>
+                        <td class="eventtd">{{i.sign_name}}</td>
+                        <td class="eventtd">{{i.sign_num}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="flex-item-sidemenu">
+            <div align="center">
+                <h3 class="titleh3">SIGN AND ITS HOUSE</h3>
+                <table class="eventtable">
+                    <tr class="eveonetr">
+                        <th class="eventth">Sign Name</th>
+                        <th class="eventth">House</th>
+                    </tr>
+                    {% for i in sign_house_df %}
+                    <tr class="eveonetr">
+                        <td class="eventtd">{{ i.sign_name }}</td>
+                        <td class="eventtd">{{ i.house_num }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="flex-item-eventtable">
+            <div align="center">
+                <h3 class="titleh3">EVENT PERSON 2</h3>
+                <table class="eventtable">
+                    <tr class="eveonetr">
+                        <th class="eventth">PLANET</th>
+                        <th class="eventth">SIGN NAME</th>
+                        <th class="eventth">HOUSE</th>
+                    </tr>
+                    {% for i in sign_planet_house_df %}
+                    <tr class="eveonetr">
+                        <td class="eventtd">{{i.planet}}</td>
+                        <td class="eventtd">{{i.sign_name}}</td>
+                        <td class="eventtd">{{i.house_num }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-constanttable">
+            <div align="center">
+                <h3>CONCATENATION </h3>
+                <table class="constanttable">
+                    <tr>
+                        <th class="constantth">Type</th>
+                        <th class="constantth">Planet</th>
+                        <th class="constantth">In House</th>
+                        <th class="constantth">He with Aspects</th>
+                        <th class="constantth">Sign He</th>
+                        <th class="constantth">Sign He Aspects</th>
+                        <th class="constantth">Sign She</th>
+                        <th class="constantth">Su_Conc</th>
+                        <th class="constantth">Mo_Conc</th>
+                        <th class="constantth">Me_Conc</th>
+                        <th class="constantth">Ma_Conc</th>
+                        <th class="constantth">Ju_Conc</th>
+                        <th class="constantth">Ve_Conc</th>
+                        <th class="constantth">Sa_Conc</th>
+                        <th class="constantth">Ra_Conc</th>
+                        <th class="constantth">Ke_Conc</th>
+                        <th class="constantth">As_Conc</th>
+                    </tr>
+                    {% for i in con_sign_planet_df %}
+                        {% if i.type == "Conj" %}
+                            <tr class="conjtr">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == "180" %}
+                            <tr class="tr180">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == "120<" %}
+                            <tr class="tr120l">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == ">120" %}
+                            <tr class="tr120g">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == "90<" %}
+                            <tr class="tr90l">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == ">90" %}
+                            <tr class="tr90g">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == "60<" %}
+                            <tr class="tr60l">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == ">60" %}
+                            <tr class="tr60g">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% elif i.type == ">150" %}
+                            <tr class="tr150g">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% else %}
+                            <tr class="tr">
+                                <td class="constanttd">{{i.type}}</td>
+                                <td class="constanttd">{{i.planet}}</td>
+                                <td class="constanttd">{{i.in_house}}</td>
+                                <td class="constanttd">{{i.he_with_aspect}}</td>
+                                <td class="constanttd">{{i.sign_he}}</td>
+                                <td class="constanttd">{{i.sign_he_aspect}}</td>
+                                <td class="constanttd">{{i.sign_she}}</td>
+                                <td class="constanttd">{{i.Su_Conc}}</td>
+                                <td class="constanttd">{{i.Mo_Conc}}</td>
+                                <td class="constanttd">{{i.Me_Conc}}</td>
+                                <td class="constanttd">{{i.Ma_Conc}}</td>
+                                <td class="constanttd">{{i.Ju_Conc}}</td>
+                                <td class="constanttd">{{i.Ve_Conc}}</td>
+                                <td class="constanttd">{{i.Sa_Conc}}</td>
+                                <td class="constanttd">{{i.Ra_Conc}}</td>
+                                <td class="constanttd">{{i.Ke_Conc}}</td>
+                                <td class="constanttd">{{i.As_Conc}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-constanttable">
+            <div align="center">
+                <h3>POINTS </h3>
+                <table class="constanttable">
+                    <tr>
+                        <th class="houseth">Type</th>
+                        <th class="houseth">Su_Point</th>
+                        <th class="houseth">Mo_Point</th>
+                        <th class="houseth">Me_Point</th>
+                        <th class="houseth">Ma_Point</th>
+                        <th class="houseth">Ju_Point</th>
+                        <th class="houseth">Ve_Point</th>
+                        <th class="houseth">Sa_Point</th>
+                        <th class="houseth">Ra_Point</th>
+                        <th class="houseth">Ke_Point</th>
+                        <th class="houseth">As_Point</th>
+                        <th class="houseth">Sign She</th>
+                        <th class="houseth">Planets</th>
+                        <th class="houseth">Total</th>
+                    </tr>
+                    {% for i in point_df %}
+                        {% if i.type == "Conj" %}
+                            <tr class="conjtr">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == "180" %}
+                            <tr class="tr180">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == "120<" %}
+                            <tr class="tr120l">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == ">120" %}
+                            <tr class="tr120g">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == "90<" %}
+                            <tr class="tr90l">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == ">90" %}
+                            <tr class="tr90g">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == "60<" %}
+                            <tr class="tr60l">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == ">60" %}
+                            <tr class="tr60g">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% elif i.type == ">150" %}
+                            <tr class="tr150g">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% else %}
+                            <tr class="tr">
+                                <td class="housetd">{{i.type}}</td>
+                                <td class="housetd">{{i.Su_Point}}</td>
+                                <td class="housetd">{{i.Mo_Point}}</td>
+                                <td class="housetd">{{i.Me_Point}}</td>
+                                <td class="housetd">{{i.Ma_Point}}</td>
+                                <td class="housetd">{{i.Ju_Point}}</td>
+                                <td class="housetd">{{i.Ve_Point}}</td>
+                                <td class="housetd">{{i.Sa_Point}}</td>
+                                <td class="housetd">{{i.Ra_Point}}</td>
+                                <td class="housetd">{{i.Ke_Point}}</td>
+                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.sign_she}}</td>
+                                <td class="housetd">{{i.planet}}</td>
+                                <td class="housetd">{{i.total}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-sidemenu">
+            <div align="center">
+                <h3>PLANET TOTAL</h3>
+                <table class="constanttable">
+                    <tr>
+                        <th class="constantth">Planet</th>
+                        <th class="constantth">Total</th>
+                    </tr>
+                    {% for i in PvsP_df %}
+                    <tr>
+                        <td class="constanttd">{{i.planet}}</td>
+                        <td class="constanttd">{{i.total}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="flex-item-graphtable">
+            {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %}
+        </div>
+
+    </div>
+    {% endif %}
+
+
+</body>
+</html>

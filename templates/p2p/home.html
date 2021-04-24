@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  text-align: center;
+}
+.flex-item-sidemenu {
+  /* background-color: #f1f1f1; */
+  padding: 10px;
+  flex: 20%;
+}
+
+.flex-item-constanttable {
+  /* background-color: #f1f1f1; */
+  padding: 10px;
+  flex: 40%;
+}
+
+.flex-item-eventtable {
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 40%;
+}
+
+.flex-item-housetable {
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 80%;
+}
+
+.flex-item-housesigntable{
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 20%;
+}
+
+
+.flex-item-signhousetable{
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 20%;
+}
+
+
+.flex-item-planetsigntable{
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 40%;
+}
+
+.flex-item-fulltable{
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 90%;
+}
+.flex-item-graphtable {
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  flex: 50%;
+}
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+/* Start CONSTANT Table */
+.constanttable {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    width: 90%;
+    color: black;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-top : 50px;
+    margin-bottom : 50px;
+  }
+
+.constanttd{
+    border: 1px solid  #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+
+.constantth {
+    padding: 8px;
+    border: 1px solid  #dddddd;
+    text-align: center;
+}
+
+
+
+tr:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+/* End CONSTANT Table */
+/* Start EVENT Table */
+.eventtable {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    width: 90%;
+    color: black;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-top : 50px;
+    margin-bottom : 50px;
+  }
+
+.eventtd{
+    border: 1px solid  #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+
+.eventth {
+    padding: 8px;
+    border: 1px solid  #dddddd;
+    text-align: center;
+}
+
+
+
+tr:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+/* End EVENT Table */
+
+
+/* Start HOUSE Table */
+
+.housetable {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    width: 90%;
+    color: black;
+    margin-top: 50px;
+    border-collapse: collapse;
+    border-style: hidden;
+    margin-top : 50px;
+    margin-bottom : 50px;
+  }
+
+.houseth {
+    padding: 8px;
+    border: 1px sohousethlid  #dddddd;
+    text-align: center;
+}
+
+.housetd{
+    border: 1px solid  #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.housetd{
+    border: 1px solid  #dddddd;
+    text-align: center;
+    padding: 8px;
+    color:
+}
+
+.housetdorange {
+  border: 1px solid #A9A9A9;
+  border-collapse: collapse;
+  padding: 5px;
+  background-color: #ffa366;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #e6ecff;
+}
+
+/* End HOUSE Table */
+
+</style>
+</head>
+<body>
+
+
+
+{% if p1_house_data  %}
+<!--PERSON ONE-->
+<div class="flex-container">
+  <div class="flex-item-sidemenu">
+      <div align="center">
+        <h3>CONSTANT LIMITS FOR SIGNS</h3>
+        <table class="constanttable">
+          <tr>
+            <th class="constantth">Sign Num</th>
+            <th class="constantth">Start</th>
+            <th class="constantth">End</th>
+            <th class="constantth">Sign Name</th>
+
+          </tr>
+          {% for i in p2_constant_lmt_sign %}
+          <tr>
+            <td class="constanttd">{{i.sign_num}}</td>
+            <td class="constanttd">{{i.start_limit}}</td>
+            <td class="constanttd">{{i.end_limit}}</td>
+            <td class="constanttd">{{i.sign_name}}</td>
+          {% endfor %}
+          </tr>
+        </table>
+    </div>
+  </div>
+  <div class="flex-item-constanttable">
+    <div class="flex-item-eventtable">
+    <h3>EVENT PERSON ONE</h3>
+    <table class="eventtable">
+          <tr>
+            <th class="eventth">Plant</th>
+            <th class="eventth">Sign Num</th>
+            <th class="eventth">Sign Name</th>
+            <th class="eventth">Degrees</th>
+
+          </tr>
+
+          {% for i in event_p1 %}
+
+          <tr>
+            <td class="eventtd">{{i.planet}}</td>
+            <td class="eventtd">{{i.sign_num}}</td>
+            <td class="eventtd">{{i.sign_name}}</td>
+            <td class="eventtd">{{i.degree}}</td>
+          </tr>
+          {% endfor %}
+    </table>
+  </div>
+  </div>
+  <div class="flex-item-eventtable">
+    <h3>EVENT PERSON TWO</h3>
+    <table class="eventtable">
+          <tr>
+            <th class="eventth">Plant</th>
+            <th class="eventth">Sign Num</th>
+            <th class="eventth">Sign Name</th>
+            <th class="eventth">Degrees</th>
+
+          </tr>
+
+          {% for i in event_p2 %}
+
+          <tr>
+            <td class="eventtd">{{i.planet}}</td>
+            <td class="eventtd">{{i.sign_num}}</td>
+            <td class="eventtd">{{i.sign_name}}</td>
+            <td class="eventtd">{{i.degree}}</td>
+          </tr>
+          {% endfor %}
+    </table>
+  </div>
+
+</div>
+
+
+<div class="flex-container">
+    <div class="flex-item-sidemenu">1</div>
+
+    <div class="flex-item-housetable">
+        <div align="center">
+          <h3>HOUSES</h3>
+            <table class="housetable">
+                <tr>
+                <th class="houseth">Sign Name</th>
+                <th class="houseth">H1</th>
+                <th class="houseth">H2</th>
+                <th class="houseth">H3</th>
+                <th class="houseth">H4</th>
+                <th class="houseth">H5</th>
+                <th class="houseth">H6</th>
+                <th class="houseth">H7</th>
+                <th class="houseth">H8</th>
+                <th class="houseth">H9</th>
+                <th class="houseth">H10</th>
+                <th class="houseth">H11</th>
+                <th class="houseth">H12</th>
+                </tr>
+                {% for h in p1_house_data %}
+                <tr>
+                <td class="housetd">{{ h.sign_name }}</td>
+                {% if h.H1 == 1 %}
+                    <td class="housetdorange">{{ h.H1 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H1 }}</td>
+                {% endif %}
+
+                {% if h.H2 == 1 %}
+                    <td class="housetdorange">{{ h.H2 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H2 }}</td>
+                {% endif %}
+
+                {% if h.H3 == 1 %}
+                    <td class="housetdorange">{{ h.H3 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H3 }}</td>
+                {% endif %}
+
+                {% if h.H4 == 1 %}
+                    <td class="housetdorange">{{ h.H4 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H4 }}</td>
+                {% endif %}
+
+                {% if h.H5 == 1 %}
+                    <td class="housetdorange">{{ h.H5 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H5 }}</td>
+                {% endif %}
+
+                {% if h.H6 == 1 %}
+                    <td class="housetdorange">{{ h.H6 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H6 }}</td>
+                {% endif %}
+
+                {% if h.H7 == 1 %}
+                    <td class="housetdorange">{{ h.H7 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H7 }}</td>
+                {% endif %}
+
+                {% if h.H8 == 1 %}
+                    <td class="housetdorange">{{ h.H8 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H8 }}</td>
+                {% endif %}
+
+                {% if h.H9 == 1 %}
+                    <td class="housetdorange">{{ h.H9 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H9 }}</td>
+                {% endif %}
+
+                {% if h.H10 == 1 %}
+                    <td class="housetdorange">{{ h.H10 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H10 }}</td>
+                {% endif %}
+
+                {% if h.H11 == 1 %}
+                    <td class="housetdorange">{{ h.H11 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H11 }}</td>
+                {% endif %}
+
+                {% if h.H12 == 1 %}
+                    <td class="housetdorange">{{ h.H12 }}</td>
+                {% else %}
+                    <td class="housetd">{{ h.H12 }}</td>
+                {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="flex-container">
+  <div class="flex-item-sidemenu">1</div>
+    <div class="flex-item-housesigntable">
+        <div align="center">
+            <h3>HOUSE AND SIGNS</h3>
+            <table class="constanttable">
+                  <tr>
+                    <th class="constantth">Sign Name</th>
+                    <th class="constantth">Sign Num</th>
+                    <th class="constantth">House</th>
+                  </tr>
+                  {% for i in p1_house_and_sign_df %}
+                  <tr>
+                    <td class="constanttd">{{i.sign_name}}</td>
+                    <td class="constanttd">{{i.sign_num}}</td>
+                    <td class="constanttd">{{i.house_num}}</td>
+                  </tr>
+                  {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="flex-item-signhousetable">
+        <div align="center">
+            <h3>SIGN AND HOUSES</h3>
+            <table class="eventtable">
+                  <tr>
+                    <th class="eventth">Sign Name</th>
+                    <th class="eventth">House</th>
+                  </tr>
+                  {% for i in p1_sign_and_house_df %}
+                  <tr>
+                    <td class="eventtd">{{ i.sign_name }}</td>
+                    <td class="eventtd">{{ i.house_num }}</td>
+                  </tr>
+                  {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="flex-item-planetsigntable">
+        <div align="center">
+            <h3>PLANET, SIGN AND HOUSE</h3>
+            <table class="eventtable">
+                <tr>
+                    <th class="eventth">Planet</th>
+                    <th class="eventth">Sign</th>
+                    <th class="eventth">House</th>
+
+
+                </tr>
+                {% for i in p1_sign_and_planet_df %}
+                <tr>
+                    <td class="eventtd">{{i.planet }}</td>
+                    <td class="eventtd">{{i.sign_name }}</td>
+                    <td class="eventtd">{{i.house_num }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<!-- PERSON ONE ENDS -->
+
+<!--<div class="flex-container">-->
+<!--  <div class="flex-item-sidemenu">1</div>-->
+<!--  <div class="flex-item-constanttable">-->
+<!--    <div align="center">-->
+<!--        <h3>CONSTANT LIMITS FOR SIGNS</h3>-->
+<!--        <table class="constanttable">-->
+<!--          <tr>-->
+<!--            <th class="constantth">Sign Num</th>-->
+<!--            <th class="constantth">Start</th>-->
+<!--            <th class="constantth">End</th>-->
+<!--            <th class="constantth">Sign Name</th>-->
+
+<!--          </tr>-->
+<!--          {% for i in p2_constant_lmt_sign %}-->
+<!--          <tr>-->
+<!--            <td class="constanttd">{{i.sign_num}}</td>-->
+<!--            <td class="constanttd">{{i.start_limit}}</td>-->
+<!--            <td class="constanttd">{{i.end_Limit}}</td>-->
+<!--            <td class="constanttd">{{i.sign_name}}</td>-->
+<!--          {% endfor %}-->
+<!--          </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+
+<!--<div class="flex-container">-->
+<!--    <div class="flex-item-sidemenu">1</div>-->
+
+<!--    <div class="flex-item-housetable">-->
+<!--        <div align="center">-->
+<!--          <h3>HOUSES</h3>-->
+<!--            <table class="housetable">-->
+<!--                <tr>-->
+<!--                <th class="houseth">Sign Name</th>-->
+<!--                <th class="houseth">H1</th>-->
+<!--                <th class="houseth">H2</th>-->
+<!--                <th class="houseth">H3</th>-->
+<!--                <th class="houseth">H4</th>-->
+<!--                <th class="houseth">H5</th>-->
+<!--                <th class="houseth">H6</th>-->
+<!--                <th class="houseth">H7</th>-->
+<!--                <th class="houseth">H8</th>-->
+<!--                <th class="houseth">H9</th>-->
+<!--                <th class="houseth">H10</th>-->
+<!--                <th class="houseth">H11</th>-->
+<!--                <th class="houseth">H12</th>-->
+<!--                </tr>-->
+<!--                {% for h in p2_house_data %}-->
+<!--                <tr>-->
+<!--                <td class="housetd">{{ h.sign_name }}</td>-->
+<!--                {% if h.H1 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H1 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H1 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H2 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H2 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H2 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H3 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H3 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H3 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H4 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H4 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H4 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H5 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H5 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H5 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H6 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H6 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H6 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H7 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H7 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H7 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H8 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H8 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H8 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H9 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H9 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H9 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H10 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H10 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H10 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H11 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H11 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H11 }}</td>-->
+<!--                {% endif %}-->
+
+<!--                {% if h.H12 == 1 %}-->
+<!--                    <td class="housetdorange">{{ h.H12 }}</td>-->
+<!--                {% else %}-->
+<!--                    <td class="housetd">{{ h.H12 }}</td>-->
+<!--                {% endif %}-->
+<!--                </tr>-->
+<!--                {% endfor %}-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="flex-container">-->
+<!--  <div class="flex-item-sidemenu">1</div>-->
+<!--    <div class="flex-item-housesigntable">-->
+<!--        <div align="center">-->
+<!--            <h3>HOUSE AND SIGNS</h3>-->
+<!--            <table class="constanttable">-->
+<!--                  <tr>-->
+<!--                    <th class="constantth">Sign Name</th>-->
+<!--                    <th class="constantth">Sign Num</th>-->
+<!--                    <th class="constantth">House</th>-->
+<!--                  </tr>-->
+<!--                  {% for i in p2_house_and_sign_df %}-->
+<!--                  <tr>-->
+<!--                    <td class="constanttd">{{i.sign_name}}</td>-->
+<!--                    <td class="constanttd">{{i.sign_num}}</td>-->
+<!--                    <td class="constanttd">{{i.house_num}}</td>-->
+<!--                  </tr>-->
+<!--                  {% endfor %}-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="flex-item-signhousetable">-->
+<!--        <div align="center">-->
+<!--            <h3>SIGN AND HOUSES</h3>-->
+<!--            <table class="eventtable">-->
+<!--                  <tr>-->
+<!--                    <th class="eventth">Sign Name</th>-->
+<!--                    <th class="eventth">House</th>-->
+<!--                  </tr>-->
+<!--                  {% for i in p2_sign_and_house_df %}-->
+<!--                  <tr>-->
+<!--                    <td class="eventtd">{{ i.sign_name }}</td>-->
+<!--                    <td class="eventtd">{{ i.house_num }}</td>-->
+<!--                  </tr>-->
+<!--                  {% endfor %}-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="flex-item-planetsigntable">-->
+<!--        <div align="center">-->
+<!--            <h3>PLANET, SIGN AND HOUSE</h3>-->
+<!--            <table class="eventtable">-->
+<!--                <tr>-->
+<!--                    <th class="eventth">Planet</th>-->
+<!--                    <th class="eventth">Sign</th>-->
+<!--                    <th class="eventth">House</th>-->
+
+
+<!--                </tr>-->
+<!--                {% for i in p2_sign_and_planet_df %}-->
+<!--                <tr>-->
+<!--                    <td class="eventtd">{{i.planet }}</td>-->
+<!--                    <td class="eventtd">{{i.sign_name }}</td>-->
+<!--                    <td class="eventtd">{{i.house_num }}</td>-->
+<!--                </tr>-->
+<!--                {% endfor %}-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;PERSON TWO ENDS&ndash;&gt;-->
+<div class="flex-container">
+    <div class="flex-item-sidemenu">1</div>
+
+    <div class="flex-item-housetable">
+        <div align="center">
+          <h3>P_ASP_P TABLE</h3>
+            <table class="housetable">
+                <tr>
+                <th class="houseth">H</th>
+                <th class="houseth"> 180 </th>
+                <th class="houseth"> >150 </th>
+                <th class="houseth"> 120< </th>
+                <th class="houseth"> >120 </th>
+                <th class="houseth"> 90< </th>
+                <th class="houseth"> >90 </th>
+                <th class="houseth"> 60< </th>
+                <th class="houseth"> >60 </th>
+                </tr>
+                {% for i in p_asp_p_table %}
+                <tr>
+                <td class="housetd">{{i.H}}</td>
+                <td class="housetd">{{i.180}}</td>
+                <td class="housetd">{{i.greater150}}</td>
+                <td class="housetd">{{i.120lesser}}</td>
+                <td class="housetd">{{i.greater120}}</td>
+                <td class="housetd">{{i.90lesser}}</td>
+                <td class="housetd">{{i.90greater}}</td>
+                <td class="housetd">{{i.60lesser}}</td>
+                <td class="housetd">{{i.60greater}}</td>
+
+                {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="flex-container">
+    <div class="flex-item-fulltable">
+        <div align="center">
+<!--          <h3>Houses</h3>-->
+            <table class="housetable">
+                <tr>
+                <th class="houseth">Type</th>
+                <th class="houseth">Planet</th>
+                <th class="houseth">In House</th>
+                <th class="houseth">He with Aspects</th>
+                <th class="houseth">Sign He</th>
+                <th class="houseth">Sign He Aspects</th>
+                <th class="houseth">Sign She</th>
+                <th class="houseth">Su_Conc</th>
+                <th class="houseth">Mo_Conc</th>
+                <th class="houseth">Me_Conc</th>
+                <th class="houseth">Ma_Conc</th>
+                <th class="houseth">Ju_Conc</th>
+                <th class="houseth">Ve_Conc</th>
+                <th class="houseth">Sa_Conc</th>
+                <th class="houseth">Ra_Conc</th>
+                <th class="houseth">Ke_Conc</th>
+                <th class="houseth">As_Conc</th>
+
+                </tr>
+                {% for i in full_table  %}
+                <tr>
+                <td class="housetd">{{i.type}}</td>
+                <td class="housetd">{{i.planet}}</td>
+                <td class="housetd">{{i.in_house}}</td>
+                <td class="housetd">{{i.he_with_aspect}}</td>
+                <td class="housetd">{{i.sign_he}}</td>
+                <td class="housetd">{{i.sign_he_aspect}}</td>
+                <td class="housetd">{{i.sign_she}}</td>
+                <td class="housetd">{{i.Su_Conc}}</td>
+                <td class="housetd">{{i.Mo_Conc}}</td>
+                <td class="housetd">{{i.Me_Conc}}</td>
+                <td class="housetd">{{i.Ma_Conc}}</td>
+                <td class="housetd">{{i.Ju_Conc}}</td>
+                <td class="housetd">{{i.Ve_Conc}}</td>
+                <td class="housetd">{{i.Sa_Conc}}</td>
+                <td class="housetd">{{i.Ra_Conc}}</td>
+                <td class="housetd">{{i.Ke_Conc}}</td>
+                <td class="housetd">{{i.As_Conc}}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="flex-container">
+
+
+    <div class="flex-item-housetable">
+        <div align="center">
+          <h3>POINTS TABLE</h3>
+            <table class="housetable">
+                <tr>
+                <th class="houseth">Type</th>
+                <th class="houseth">Su_Point</th>
+                <th class="houseth">Mo_Point</th>
+                <th class="houseth">Me_Point</th>
+                <th class="houseth">Ma_Point</th>
+                <th class="houseth">Ju_Point</th>
+                <th class="houseth">Ve_Point</th>
+                <th class="houseth">Sa_Point</th>
+                <th class="houseth">Ra_Point</th>
+                <th class="houseth">Ke_Point</th>
+                <th class="houseth">As_Point</th>
+                <th class="houseth">Sign She</th>
+                <th class="houseth">Planets</th>
+                <th class="houseth">Total</th>
+                </tr>
+                {% for i in point_df %}
+                <tr>
+                <td class="housetd">{{i.type}}</td>
+                <td class="housetd">{{i.Su_Point}}</td>
+                <td class="housetd">{{i.Mo_Point}}</td>
+                <td class="housetd">{{i.Me_Point}}</td>
+                <td class="housetd">{{i.Ma_Point}}</td>
+                <td class="housetd">{{i.Ju_Point}}</td>
+                <td class="housetd">{{i.Ve_Point}}</td>
+                <td class="housetd">{{i.Sa_Point}}</td>
+                <td class="housetd">{{i.Ra_Point}}</td>
+                <td class="housetd">{{i.Ke_Point}}</td>
+                <td class="housetd">{{i.As_Point}}</td>
+                <td class="housetd">{{i.sign_she}}</td>
+                <td class="housetd">{{i.planet}}</td>
+                <td class="housetd">{{i.total}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="flex-container">
+    <div class="flex-item-sidemenu">
+        <div align="center">
+        <h3>PLANET TOTAL</h3>
+        <table class="constanttable">
+          <tr>
+            <th class="constantth">Planet</th>
+            <th class="constantth">Total</th>
+
+          </tr>
+            {% for i in PvsP_df %}
+          <tr>
+            <td class="constanttd">{{i.planet}}</td>
+            <td class="constanttd">{{i.total}}</td>
+          </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+
+    <div class="flex-item-graphtable">
+        {% autoescape off %}
+  {{ plot_div }}
+  {% endautoescape %}
+    </div>
+    <div class="flex-item-sidemenu">1</div>
+</div>
+
+{% endif %}
+</body>
+</html>
