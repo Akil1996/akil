@@ -502,12 +502,12 @@ def single_points_table(df):
     df1["As_Point"] = As_point_lst
     df1['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"] * (len(df1) // 2 + 1))[:len(df1)]
     df1.loc[df['type'] == ">150", 'planet'] = "Ma"
-    df1.loc[df['type'] == "Conj", 'total'] = ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] + df1["As_Point"]) * 9)
-    df1.loc[df["type"]== "180", "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] + df1["As_Point"]) * 7)
-    df1.loc[((df["type"]== "120<") | (df["type"]== ">120")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] + df1["As_Point"]) * 5)
-    df1.loc[((df["type"]== "90<") | (df["type"]== ">90")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] + df1["As_Point"]) * 3)
-    df1.loc[((df["type"]== "60<") | (df["type"]== ">60")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] + df1["As_Point"]) * 2)
-    df1.loc[df["type"]== ">150", "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] + df1["As_Point"]) * 7)
+    df1.loc[df['type'] == "Conj", 'total'] = ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 9)
+    df1.loc[df["type"]== "180", "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 7)
+    df1.loc[((df["type"]== "120<") | (df["type"]== ">120")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 5)
+    df1.loc[((df["type"]== "90<") | (df["type"]== ">90")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 3)
+    df1.loc[((df["type"]== "60<") | (df["type"]== ">60")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"]) * 2)
+    df1.loc[df["type"]== ">150", "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"]) * 7)
     return df1
 
 def point_planets_planet_aspects(single_point_df):
