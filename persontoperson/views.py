@@ -9,10 +9,10 @@ from .p1xp2exact import p1xp2ex_main
 from .ax_report import graph_main
 
 
-degree_dic = {"p1_su_degree": 331, "p1_mo_degree": 232, "p1_me_degree": 290, "p1_ma_degree": 274, "p1_ju_degree": 305.43,
-                  "p1_ve_degree": 354, "p1_sa_degree": 332, "p1_ra_degree": 280, "p1_ke_degree": 100, "p1_as_degree": 80,
-                  "p2_su_degree": 9.01666666666667, "p2_mo_degree": 326.45, "p2_me_degree": 341.816666666667, "p2_ma_degree": 349.05, "p2_ju_degree": 96.6833333333333,
-                  "p2_ve_degree": 336.65, "p2_sa_degree": 133.73, "p2_ra_degree": 141.72, "p2_ke_degree": 321.71, "p2_as_degree": 318.28,
+degree_dic = {"p1_su_degree": 0, "p1_mo_degree": 0, "p1_me_degree": 0, "p1_ma_degree": 0, "p1_ju_degree": 0,
+                  "p1_ve_degree": 0, "p1_sa_degree": 0, "p1_ra_degree": 0, "p1_ke_degree": 0, "p1_as_degree": 0,
+                  "p2_su_degree": 0, "p2_mo_degree": 0, "p2_me_degree": 0, "p2_ma_degree": 0, "p2_ju_degree": 0,
+                  "p2_ve_degree": 0, "p2_sa_degree": 0, "p2_ra_degree": 0, "p2_ke_degree": 0, "p2_as_degree": 0,
                   }
 
 def p2pform(request):
@@ -25,7 +25,12 @@ def p2pform(request):
         main_dic = p1vsp2_main(degree_dic["p1_su_degree"], degree_dic["p1_mo_degree"], degree_dic["p1_me_degree"], degree_dic["p1_ma_degree"], degree_dic["p1_ju_degree"], degree_dic["p1_ve_degree"], degree_dic["p1_sa_degree"], degree_dic["p1_ra_degree"], degree_dic["p1_ke_degree"], degree_dic["p1_as_degree"], degree_dic["p2_su_degree"], degree_dic["p2_mo_degree"], degree_dic["p2_me_degree"], degree_dic["p2_ma_degree"], degree_dic["p2_ju_degree"], degree_dic["p2_ve_degree"], degree_dic["p2_sa_degree"], degree_dic["p2_ra_degree"], degree_dic["p2_ke_degree"], degree_dic["p2_as_degree"])
         main_dic.update(degree_dic)
         return render(request, "p2p/p2phome.html", main_dic)
-    return render(request, "p2p/p2phome.html", degree_dic)
+    if degree_dic["p1_su_degree"] == 0:
+        return render(request, "p2p/p2phome.html", {})
+    else:
+        main_dic = p1vsp2_main(degree_dic["p1_su_degree"], degree_dic["p1_mo_degree"], degree_dic["p1_me_degree"], degree_dic["p1_ma_degree"], degree_dic["p1_ju_degree"], degree_dic["p1_ve_degree"], degree_dic["p1_sa_degree"], degree_dic["p1_ra_degree"], degree_dic["p1_ke_degree"], degree_dic["p1_as_degree"], degree_dic["p2_su_degree"], degree_dic["p2_mo_degree"], degree_dic["p2_me_degree"], degree_dic["p2_ma_degree"], degree_dic["p2_ju_degree"], degree_dic["p2_ve_degree"], degree_dic["p2_sa_degree"], degree_dic["p2_ra_degree"], degree_dic["p2_ke_degree"], degree_dic["p2_as_degree"])
+        main_dic.update(degree_dic)
+        return render(request, "p2p/p2phome.html", main_dic)
 
 
 def p1form(request):
