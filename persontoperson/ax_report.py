@@ -1,15 +1,16 @@
 from .p1xp2exact import *
 import plotly.graph_objs as go
 import plotly.offline as opy
+from .p1conp2 import dataframe_to_dict
 
 
+def graph_sum_of_distance(graph_pd_df):
+    df1 = graph_pd_df.copy()
+    df1.reset_index(inplace=True)
+    df1.columns = (["type", "distance", "point"])
+    df1["planet"] = ["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"]
+    return df1
 
-# def graph_df_to_list(df):
-#
-#     lst_a = df.iloc[:, 0].to_list()
-#     lst_b = df.iloc[:, 1].to_list()
-#
-#     return lst_a, lst_b
 
 def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_degree):
     df1= distance_df.copy()
@@ -25,7 +26,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
     df1["Ke_dp_lst"] = df2.Ke_dp_lst.to_list()
     df1["As_dp_lst"] = df2.As_dp_lst.to_list()
     df1 = df1.set_index("type")
-    if graph_planets == "Su":
+    if graph_planets == "SUN":
         temp_df = (df1.loc[:, ["Su_Dis_lst", "Su_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -44,7 +45,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
 
-    if graph_planets == "Mo":
+    if graph_planets == "MOON":
         temp_df = (df1.loc[:, ["Mo_Dis_lst", "Mo_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -63,7 +64,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
 
-    if graph_planets == "Me":
+    if graph_planets == "MECURY":
         temp_df = (df1.loc[:, ["Me_Dis_lst", "Me_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -81,7 +82,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
             return (temp_df.loc["60<"])
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
-    if graph_planets == "Ma":
+    if graph_planets == "MARTE":
         temp_df = (df1.loc[:, ["Ma_Dis_lst", "Ma_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -99,7 +100,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
             return (temp_df.loc["60<"])
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
-    if graph_planets == "Ju":
+    if graph_planets == "JUPITER":
         temp_df = (df1.loc[:, ["Ju_Dis_lst", "Ju_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -118,7 +119,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
 
-    if graph_planets == "Ve":
+    if graph_planets == "VENUS":
         temp_df = (df1.loc[:, ["Ve_Dis_lst", "Ve_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -137,7 +138,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
 
-    if graph_planets == "Sa":
+    if graph_planets == "SATURN":
         temp_df = (df1.loc[:, ["Sa_Dis_lst", "Sa_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -157,7 +158,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
 
-    if graph_planets == "Ra":
+    if graph_planets == "RAHU":
         temp_df = (df1.loc[:, ["Ra_Dis_lst", "Ra_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -176,7 +177,7 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
         if graph_degree == ">60":
             return (temp_df.loc[">60"])
 
-    if graph_planets == "Ke":
+    if graph_planets == "KETU":
         temp_df = (df1.loc[:, ["Ke_Dis_lst", "Ke_dp_lst"]])
         if graph_degree == "Conj":
             return (temp_df.loc["Conj"])
@@ -233,6 +234,44 @@ def generate_graph(graph_pd_df):
     bar_div = opy.plot(fig, auto_open=False, output_type='div')
     return bar_div
 
+def order_planets(graph_planets):
+    if graph_planets == "SUN":
+        return [{"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "MOON":
+        return [{"planet": "MOON"},  {"planet": "SUN"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "MECURY":
+        return [{"planet": "MECURY"}, {"planet": "SUN"}, {"planet": "MOON"},  {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "MARTE":
+        return [{"planet": "MARTE"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "JUPITER":
+        return [{"planet": "JUPITER"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"},  {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "VENUS":
+        return [{"planet": "VENUS"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"},  {"planet": "SATURN"}, {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "SATURN":
+        return [{"planet": "SATURN"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"},  {"planet": "RAHU"},{ "planet": "KETU"}]
+    if graph_planets == "RAHU":
+        return [{"planet": "RAHU"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, { "planet": "KETU"}]
+    if graph_planets == "KETU":
+        return [{ "planet": "KETU"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"}]
+
+def order_deg(graph_degree):
+    print(graph_degree)
+    if graph_degree == "Conj":
+        return [{"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
+    if graph_degree == "180":
+        return [{"deg": "180"}, {"deg": "Conj"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
+    if graph_degree == "120<":
+        return [{"deg": "120<"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
+    if graph_degree == ">120":
+        return [{"deg": ">120"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
+    if graph_degree == "90<":
+        return [{"deg": "90<"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
+    if graph_degree == ">90":
+        return [{"deg": ">90"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": "60<"}, {"deg": ">60"}]
+    if graph_degree == "60<":
+        return [{"deg": "60<"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": ">60"}]
+    if graph_degree == ">60":
+        return [{"deg": ">60"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}]
 
 def graph_main(graph_planets, graph_degree):
     constants_start_and_end_limit = constants_limit_for_sign()
@@ -257,6 +296,10 @@ def graph_main(graph_planets, graph_degree):
     interaccion_df = interaccion(distance_planets_df)
     p1p2recibe_df = p1p2recibe(interaccion_df)
     graph_pd_df = graph_point_distance(distance_df,distance_planets_df, graph_planets, graph_degree)
-    bar_div =generate_graph(graph_pd_df)
-    main_dic = {"bar_div": bar_div}
+    sum_graph = graph_sum_of_distance(graph_pd_df)
+    bar_div = generate_graph(graph_pd_df)
+    sum_graph = dataframe_to_dict(sum_graph)
+    order_planets_df = order_planets(graph_planets)
+    order_deg_df = order_deg(graph_degree)
+    main_dic = {"bar_div": bar_div, "sum_graph": sum_graph , "order_planets": order_planets_df, "order_deg": order_deg_df}
     return main_dic

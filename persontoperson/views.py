@@ -40,12 +40,15 @@ def p1xp2exactform(request):
 
 
 def ax_report_form(request):
+    order_planets_df = [{"planet": "SUN"}, {"planet": "MOON"},{"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"},{"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"}, {"planet": "KETU"}]
+    order_deg_df = [{"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
+    main_dic= {"order_planets":order_planets_df, "order_deg": order_deg_df}
     if request.method == "POST":
         graph_planets = request.POST['g_planet']
         graph_degree = request.POST['g_degree']
         main_dic = graph_main(graph_planets, graph_degree)
         return render(request, "p2p/axhome.html", main_dic)
-    return render(request, "p2p/axhome.html", {})
+    return render(request, "p2p/axhome.html", main_dic)
 
 
 def dataframe_to_dict(df):
