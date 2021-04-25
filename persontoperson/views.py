@@ -51,7 +51,7 @@ def ax_report_form(request):
     if request.method == "POST":
         graph_planets = request.POST['g_planet']
         graph_degree = request.POST['g_degree']
-        main_dic = graph_main(graph_planets, graph_degree)
+        main_dic = graph_main(graph_planets, graph_degree, degree_dic["p1_su_degree"], degree_dic["p1_mo_degree"], degree_dic["p1_me_degree"], degree_dic["p1_ma_degree"], degree_dic["p1_ju_degree"], degree_dic["p1_ve_degree"], degree_dic["p1_sa_degree"], degree_dic["p1_ra_degree"], degree_dic["p1_ke_degree"], degree_dic["p1_as_degree"], degree_dic["p2_su_degree"], degree_dic["p2_mo_degree"], degree_dic["p2_me_degree"], degree_dic["p2_ma_degree"], degree_dic["p2_ju_degree"], degree_dic["p2_ve_degree"], degree_dic["p2_sa_degree"], degree_dic["p2_ra_degree"], degree_dic["p2_ke_degree"], degree_dic["p2_as_degree"])
         return render(request, "p2p/axhome.html", main_dic)
     return render(request, "p2p/axhome.html", main_dic)
 

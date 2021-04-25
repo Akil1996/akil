@@ -273,11 +273,12 @@ def order_deg(graph_degree):
     if graph_degree == ">60":
         return [{"deg": ">60"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}]
 
-def graph_main(graph_planets, graph_degree):
+def graph_main(graph_planets, graph_degree, su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d, as_d, su_d2, mo_d2, me_d2, ma_d2, ju_d2, ve_d2, sa_d2, ra_d2, ke_d2, as_d2 ):
     constants_start_and_end_limit = constants_limit_for_sign()
-    eve_person_one = event_person(constants_start_and_end_limit, 331, 232, 290, 274, 305, 354, 332, 280, 100, 80)
-    eve_person_two = event_person(constants_start_and_end_limit, 9.02, 326.45, 341.82, 349.05, 96.68, 336.65, 133.73,
-                                  141.72, 321.72, 318.28)
+    eve_person_one = event_person(constants_start_and_end_limit, su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d,
+                                  as_d)
+    eve_person_two = event_person(constants_start_and_end_limit, su_d2, mo_d2, me_d2, ma_d2, ju_d2, ve_d2, sa_d2, ra_d2,
+                                  ke_d2, as_d2)
     house_df = house_table(eve_person_one)
     house_sign_df = house_and_sign(house_df)
     sign_house_df = sign_and_house(house_sign_df)

@@ -500,6 +500,7 @@ def single_points_table(df):
     df1["Ra_Point"] = Ra_point_lst
     df1["Ke_Point"] = Ke_point_lst
     df1["As_Point"] = As_point_lst
+
     df1['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"] * (len(df1) // 2 + 1))[:len(df1)]
     df1.loc[df['type'] == ">150", 'planet'] = "Ma"
     df1.loc[df['type'] == "Conj", 'total'] = ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 9)
@@ -553,9 +554,10 @@ def point_planets_planet_aspects(single_point_df):
     df["60lesser"] = lst_60lesser
     df["60greater"] = lst_60greater
     df["150greater"] = lst_150greater
+    print(lst_60greater)
     df['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"])
     df['total'] = df["Conj"] + df["180"] + df["120lesser"] + df["120greater"] + df["90lesser"] + df["90greater"] + df["60lesser"] + df["60greater"] + df["150greater"]
-    df["consolidate"] = df["total"] * 0.1
+    df["consolidate"] = df["total"] * 0.5
     return df
 
 def p1main(su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d, as_d):

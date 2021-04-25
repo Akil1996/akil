@@ -458,6 +458,7 @@ def points_table(con_sign_planet_df, point_planet_aspects_df):
     df["Ra_Point"] = Ra_point_lst
     df["Ke_Point"] = Ke_point_lst
     df["As_Point"] = As_point_lst
+    print(As_point_lst)
     Su_point_lst_v2 = []
     Mo_point_lst_v2 = []
     Me_point_lst_v2 = []
