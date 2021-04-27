@@ -554,7 +554,6 @@ def point_planets_planet_aspects(single_point_df):
     df["60lesser"] = lst_60lesser
     df["60greater"] = lst_60greater
     df["150greater"] = lst_150greater
-    print(lst_60greater)
     df['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"])
     df['total'] = df["Conj"] + df["180"] + df["120lesser"] + df["120greater"] + df["90lesser"] + df["90greater"] + df["60lesser"] + df["60greater"] + df["150greater"]
     df["consolidate"] = df["total"] * 0.5

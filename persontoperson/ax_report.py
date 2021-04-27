@@ -216,23 +216,23 @@ def graph_point_distance(distance_df, distance_planets_df,graph_planets, graph_d
             return (temp_df.loc[">60"])
 
 def generate_graph(graph_pd_df):
-    planets = ["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke","As"]
-    lst_a = graph_pd_df.iloc[:, 0].to_list()
-    lst_b = graph_pd_df.iloc[:, 1].to_list()
-    fig = go.Figure(
-        data=[
-            go.Bar(name='Distance', x=planets, y=lst_a),
-            go.Bar(name='Points', x=planets, y=lst_b)
-        ],
-        layout=go.Layout(
-            title="ASPECTS OF PERSON 1 OVER PLANETS OF PERSON 2",
-            yaxis_title="Values"
+        planets = ["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke","As"]
+        lst_a = graph_pd_df.iloc[:, 0].to_list()
+        lst_b = graph_pd_df.iloc[:, 1].to_list()
+        fig = go.Figure(
+            data=[
+                go.Bar(name='Distance', x=planets, y=lst_a),
+                go.Bar(name='Points', x=planets, y=lst_b)
+            ],
+            layout=go.Layout(
+                title="ASPECTS OF PERSON 1 OVER PLANETS OF PERSON 2",
+                yaxis_title="Values"
+            )
         )
-    )
-    fig.update_layout(barmode='group')
+        fig.update_layout(barmode='group')
 
-    bar_div = opy.plot(fig, auto_open=False, output_type='div')
-    return bar_div
+        bar_div = opy.plot(fig, auto_open=False, output_type='div')
+        return bar_div
 
 def order_planets(graph_planets):
     if graph_planets == "SUN":
@@ -255,7 +255,6 @@ def order_planets(graph_planets):
         return [{ "planet": "KETU"}, {"planet": "SUN"}, {"planet": "MOON"}, {"planet": "MECURY"}, {"planet": "MARTE"}, {"planet": "JUPITER"}, {"planet": "VENUS"}, {"planet": "SATURN"}, {"planet": "RAHU"}]
 
 def order_deg(graph_degree):
-    print(graph_degree)
     if graph_degree == "Conj":
         return [{"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}, {"deg": ">60"}]
     if graph_degree == "180":
@@ -273,7 +272,7 @@ def order_deg(graph_degree):
     if graph_degree == ">60":
         return [{"deg": ">60"}, {"deg": "Conj"}, {"deg": "180"}, {"deg": "120<"}, {"deg": ">120"}, {"deg": "90<"}, {"deg": ">90"}, {"deg": "60<"}]
 
-def graph_main(graph_planets, graph_degree, su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d, as_d, su_d2, mo_d2, me_d2, ma_d2, ju_d2, ve_d2, sa_d2, ra_d2, ke_d2, as_d2 ):
+def graph_main(graph_planets, graph_degree, su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d, as_d, su_d2, mo_d2, me_d2, ma_d2, ju_d2, ve_d2, sa_d2, ra_d2, ke_d2, as_d2):
     constants_start_and_end_limit = constants_limit_for_sign()
     eve_person_one = event_person(constants_start_and_end_limit, su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d,
                                   as_d)

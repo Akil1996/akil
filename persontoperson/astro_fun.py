@@ -3,10 +3,7 @@ import json
 import numpy as np
 from .models import concatenation_points
 from django_pandas.io import read_frame
-from .personone import single_concatenation_table, single_points_table, point_planets_planet_aspects
-import plotly.graph_objs as go
-import plotly.offline as opy
-
+from .models import distance_multiplier
 
 # CONVERTING THE DATAFRAME TO DICTIONARY FOR PASSING THROUGH CONTEXT
 def dataframe_to_dict(df):
@@ -154,7 +151,7 @@ def sign_table_degs():
 
 
 #concatenation table for sign and house
-def concatenation_sign_house(sign_planet_house_df, pasp_table_df, sign_table_df, eve_person_two):
+def p1vsp2_concatenation_sign_house(sign_planet_house_df, pasp_table_df, sign_table_df, eve_person_two):
     p_s_h = sign_planet_house_df.copy()
     df2 = pasp_table_df.copy()
     df3 = sign_table_df.copy()
@@ -369,17 +366,17 @@ def concatenation_sign_house(sign_planet_house_df, pasp_table_df, sign_table_df,
     return df
 
 #getting concatenation points from the database
-def points_database():
+def concatenation_points_database():
     db = concatenation_points.objects.all()
     db = read_frame(db)
     return db
 
 
 #point table for concatenation of sign and planets
-def points_table(con_sign_planet_df, point_planet_aspects_df):
+def p1vsp2_points_table(con_sign_planet_df, point_planet_aspects_df):
     df = con_sign_planet_df.copy()
     df2 = point_planet_aspects_df.copy()
-    db = points_database()
+    db = concatenation_points_database()
     Su_point_lst = []
     Mo_point_lst = []
     Me_point_lst = []
@@ -538,8 +535,6 @@ def points_table(con_sign_planet_df, point_planet_aspects_df):
         Ke_point_lst_v2[-1] = Ke_point_lst_v2[-1] * 0.6
     if (As_point_lst_v2[-1]) != 0:
         As_point_lst_v2[-1] = As_point_lst_v2[-1] * 0.6
-
-
     df["Su_Point"] = Su_point_lst_v2
     df["Mo_Point"] = Mo_point_lst_v2
     df["Me_Point"] = Me_point_lst_v2
@@ -555,15 +550,14 @@ def points_table(con_sign_planet_df, point_planet_aspects_df):
     df.loc[df['type'] == ">150", 'planet'] = "Ma"
     return df
 
-def sep_degree_p1p2(eve_person_one, eve_person_two):
+def p1vsp2_sep_degree(eve_person_one, eve_person_two):
     df = pd.DataFrame()
     df["planet"] = eve_person_one["planet"].to_list()
     df["p1_degrees"] = eve_person_one["degree"].to_list()
     df["p2_degrees"] = eve_person_two["degree"].to_list()
     return df
 
-
-def distance_table(con_sign_planet_df, sep_degree_df):
+def p1xp2_distance_table(con_sign_planet_df, sep_degree_df):
     df1 = con_sign_planet_df.copy()
     df2 = sep_degree_df.copy()
     Su_Dis_lst = []
@@ -1237,94 +1231,530 @@ def distance_table(con_sign_planet_df, sep_degree_df):
     df1["As_Dis_lst"] = As_Dis_lst
     return df1
 
-def PvsP_table(point_df):
-    df = point_df.copy()
-    df1 = pd.DataFrame()
-    lis_planet = ["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"]
-    df1["planet"] = lis_planet
-    temp_list = df.loc[df.type == ">150"]
-    df.drop(80, inplace=True)
-    # df1["total"] = (df.groupby(['planet']).sum())["total"]
-    lis_total = []
-    df2 = ((df.groupby(['planet']).sum())["total"])
-    for i in lis_planet:
-        if i == "Su":
-            lis_total.append(df2[i] + temp_list["Su_Point"].iloc[0])
-        if i == "Mo":
-            lis_total.append(df2[i] + temp_list["Mo_Point"].iloc[0])
-        if i == "Me":
-            lis_total.append(df2[i] + temp_list["Me_Point"].iloc[0])
-        if i == "Ma":
-            lis_total.append(df2[i] + temp_list["Ma_Point"].iloc[0])
-        if i == "Ju":
-            lis_total.append(df2[i] + temp_list["Ju_Point"].iloc[0])
-        if i == "Ve":
-            lis_total.append(df2[i] + temp_list["Ve_Point"].iloc[0])
-        if i == "Sa":
-            lis_total.append(df2[i] + temp_list["Sa_Point"].iloc[0])
-        if i == "Ra":
-            lis_total.append(df2[i] + temp_list["Ra_Point"].iloc[0])
-        if i == "Ke":
-            lis_total.append(df2[i] + temp_list["Ke_Point"].iloc[0])
-        if i == "As":
-            lis_total.append(df2[i] + temp_list["As_Point"].iloc[0])
-    df1["total"] = lis_total
+def list_to_list_of_lists(lst):
+    return [[el] for el in lst]
+
+def p1_concatenation_table(shp_df,pasp_table_df, signtable):
+    Su_Conc_lst = []
+    Mo_Conc_lst = []
+    Me_Conc_lst = []
+    Ma_Conc_lst = []
+    Ju_Conc_lst = []
+    Ve_Conc_lst = []
+    Sa_Conc_lst = []
+    Ra_Conc_lst = []
+    Ke_Conc_lst = []
+    As_Conc_lst = []
+    df = pd.DataFrame(columns=['type'])
+    type_list = ["Conj", "180", "120<", ">120", "90<", ">90", "60<", ">60"]
+    for i in type_list:
+        lst = list_to_list_of_lists([i for j in range(10)])
+        for k in lst:
+            df.loc[len(df)] = k
+    df.loc[len(df)] = [">150"]
+    df['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"] * (len(df) // 2 + 1))[:len(df)]
+    house_lst = shp_df["house_num"].to_list()
+    df["in_house"] = (house_lst * (len(df) // 2 + 1))[:len(df)]
+    df.loc[df['type'] == ">150", 'in_house'] = df.iloc[73, df.columns.get_loc("in_house")]
+    sign_lst = shp_df["sign_name"].to_list()
+    df["sign_he"] = (sign_lst * (len(df) // 2 + 1))[:len(df)]
+    df.loc[df['type'] == ">150", 'sign_he'] = df.iloc[73, df.columns.get_loc("sign_he")]
+    df2 = pasp_table_df.copy()
+    lst = []
+    for index, row in df.iterrows():
+        if row.type == "Conj":
+            lst.append(row.in_house)
+        elif row.type == "180":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("180")])
+        elif row.type == ">150":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("greater150")])
+        elif row.type == "120<":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("120lesser")])
+        elif row.type == ">120":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("greater120")])
+        elif row.type == "90<":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("90lesser")])
+        elif row.type == ">90":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("90greater")])
+        elif row.type == "60<":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("60lesser")])
+        elif row.type == ">60":
+            lst.append(df2.iloc[(row.in_house) - 1, df2.columns.get_loc("60greater")])
+    df["he_with_aspects"] = lst
+    df3 = signtable.copy()
+    s_lst = []
+    for index, row in df.iterrows():
+        check_sign = 0
+        if row.sign_he == "Ar":
+            check_sign = 1
+        elif row.sign_he == "Ta":
+            check_sign = 2
+        elif row.sign_he == "Ge":
+            check_sign = 3
+        elif row.sign_he == "Ca":
+            check_sign = 4
+        elif row.sign_he == "Le":
+            check_sign = 5
+        elif row.sign_he == "Vg":
+            check_sign = 6
+        elif row.sign_he == "Li":
+            check_sign = 7
+        elif row.sign_he == "Sc":
+            check_sign = 8
+        elif row.sign_he == "Sg":
+            check_sign = 9
+        elif row.sign_he == "Cp":
+            check_sign = 10
+        elif row.sign_he == "Aq":
+            check_sign = 11
+        elif row.sign_he == "Pi":
+            check_sign = 12
+        if row.type == "Conj":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("Conj")])
+        elif row.type == "180":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("180")])
+        elif row.type == ">150":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("greater150")])
+        elif row.type == "120<":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("120lesser")])
+        elif row.type == ">120":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("greater120")])
+        elif row.type == "90<":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("90lesser")])
+        elif row.type == ">90":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("90greater")])
+        elif row.type == "60<":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("60lesser")])
+        elif row.type == ">60":
+            s_lst.append(df3.iloc[check_sign - 1, df3.columns.get_loc("60greater")])
+    df["sign_he_aspect"] = s_lst
+    count = 0
+    for index, row in df.iterrows():
+        if row.type == ">150":
+            Su_Conc_lst.append(0)
+            Mo_Conc_lst.append(0)
+            Me_Conc_lst.append(0)
+            Ma_Conc_lst.append(0)
+            Ju_Conc_lst.append(0)
+            Ve_Conc_lst.append(0)
+            Sa_Conc_lst.append(0)
+            Ra_Conc_lst.append(0)
+            Ke_Conc_lst.append(0)
+            As_Conc_lst.append(0)
+        else:
+            count += 1
+            planet_count = 0
+            for i in sign_lst:
+                planet_count += 1
+                if count == 1:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Su_Conc_lst.append(0)
+                        else:
+                            Su_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Su_Conc_lst.append(0)
+                if count == 2:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Mo_Conc_lst.append(0)
+                        else:
+                            Mo_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Mo_Conc_lst.append(0)
+                if count == 3:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Me_Conc_lst.append(0)
+                        else:
+                            Me_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Me_Conc_lst.append(0)
+                if count == 4:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Ma_Conc_lst.append(0)
+                        else:
+                            Ma_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Ma_Conc_lst.append(0)
+                if count == 5:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Ju_Conc_lst.append(0)
+                        else:
+                            Ju_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Ju_Conc_lst.append(0)
+                if count == 6:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Ve_Conc_lst.append(0)
+                        else:
+                            Ve_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Ve_Conc_lst.append(0)
+                if count == 7:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Sa_Conc_lst.append(0)
+                        else:
+                            Sa_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Sa_Conc_lst.append(0)
+                if count == 8:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Ra_Conc_lst.append(0)
+                        else:
+                            Ra_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Ra_Conc_lst.append(0)
+                if count == 9:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            Ke_Conc_lst.append(0)
+                        else:
+                            Ke_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        Ke_Conc_lst.append(0)
+                if count == 10:
+                    if row.sign_he_aspect == i:
+                        if row.planet == planet_num_check(planet_count):
+                            As_Conc_lst.append(0)
+                        else:
+                            As_Conc_lst.append(str(row.sign_he + row.planet + i + planet_num_check(planet_count)))
+                    else:
+                        As_Conc_lst.append(0)
+                if count == 10 and planet_count == 10:
+                    count = 0
+
+    df.loc[df.type == ">150", "planet"] = "Ma"
+    df.loc[df.type == ">150", "Su_Conc"] = "AK"
+    mars_c = ""
+    for index, row in df.iterrows():
+        if row.type == ">150":
+            p_count = 0
+            for i in sign_lst:
+                p_count += 1
+                if row.sign_he_aspect == i:
+                    if row.sign_he_aspect == i:
+                        mars_c = (str(row.sign_he + row.planet + i + planet_num_check(p_count)))
+    if len(mars_c) > 1:
+        Su_Conc_lst[-1] = mars_c
+    df["Su_Conc"] = Su_Conc_lst
+    df["Mo_Conc"] = Mo_Conc_lst
+    df["Me_Conc"] = Me_Conc_lst
+    df["Ma_Conc"] = Ma_Conc_lst
+    df["Ju_Conc"] = Ju_Conc_lst
+    df["Ve_Conc"] = Ve_Conc_lst
+    df["Sa_Conc"] = Sa_Conc_lst
+    df["Ra_Conc"] = Ra_Conc_lst
+    df["Ke_Conc"] = Ke_Conc_lst
+    df["As_Conc"] = As_Conc_lst
+    df.loc[(df.type != "Conj"), "As_Conc"] = 0
+    # df.loc[df.type != "Conj", "Ke_Conc"] = 0
+    df.loc[df.type == "180", "Ra_Conc"] = 0
+    df.loc[df.type == "180", "Ke_Conc"] = 0
+    # df.loc[df.type == ">150", "Ra_Conc"] = 0
+    return df
+
+def p1_points_table(df):
+    db = concatenation_points_database()
+    Su_point_lst = []
+    Mo_point_lst = []
+    Me_point_lst = []
+    Ma_point_lst = []
+    Ju_point_lst = []
+    Ve_point_lst = []
+    Sa_point_lst = []
+    Ra_point_lst = []
+    Ke_point_lst = []
+    As_point_lst = []
+    df1 = pd.DataFrame(columns=['type'])
+    type_list = ["Conj", "180", "120<", ">120", "90<", ">90", "60<", ">60"]
+    for i in type_list:
+        lst = list_to_list_of_lists([i for j in range(10)])
+        for k in lst:
+            df1.loc[len(df1)] = k
+    df1.loc[len(df1)] = [">150"]
+    for index, row in df.iterrows():
+        if row.Su_Conc != 0:
+            Su_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Su_Conc])].con_points.values)[0])
+        else:
+            Su_point_lst.append(0)
+        if row.Mo_Conc != 0:
+            Mo_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Mo_Conc])].con_points.values)[0])
+        else:
+            Mo_point_lst.append(0)
+
+
+        if row.Me_Conc != 0:
+            Me_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Me_Conc])].con_points.values)[0])
+        else:
+            Me_point_lst.append(0)
+
+
+        if row.Ma_Conc != 0:
+            Ma_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Ma_Conc])].con_points.values)[0])
+        else:
+            Ma_point_lst.append(0)
+
+
+        if row.Ju_Conc != 0:
+            Ju_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Ju_Conc])].con_points.values)[0])
+        else:
+            Ju_point_lst.append(0)
+
+
+        if row.Ve_Conc != 0:
+            Ve_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Ve_Conc])].con_points.values)[0])
+        else:
+            Ve_point_lst.append(0)
+
+
+        if row.Sa_Conc != 0:
+            Sa_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Sa_Conc])].con_points.values)[0])
+        else:
+            Sa_point_lst.append(0)
+
+
+        if row.Ra_Conc != 0:
+            Ra_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Ra_Conc])].con_points.values)[0])
+        else:
+            Ra_point_lst.append(0)
+
+
+        if row.Ke_Conc != 0:
+            Ke_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.Ke_Conc])].con_points.values)[0])
+        else:
+            Ke_point_lst.append(0)
+
+
+        if row.As_Conc != 0:
+            As_point_lst.append((db[db['con_type'].isin([row.type]) & db['con_name'].isin([row.As_Conc])].con_points.values)[0])
+        else:
+            As_point_lst.append(0)
+    df1["Su_Point"] = Su_point_lst
+    df1["Mo_Point"] = Mo_point_lst
+    df1["Me_Point"] = Me_point_lst
+    df1["Ma_Point"] = Ma_point_lst
+    df1["Ju_Point"] = Ju_point_lst
+    df1["Ve_Point"] = Ve_point_lst
+    df1["Sa_Point"] = Sa_point_lst
+    df1["Ra_Point"] = Ra_point_lst
+    df1["Ke_Point"] = Ke_point_lst
+    df1["As_Point"] = As_point_lst
+
+    df1['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"] * (len(df1) // 2 + 1))[:len(df1)]
+    df1.loc[df['type'] == ">150", 'planet'] = "Ma"
+    df1.loc[df['type'] == "Conj", 'total'] = ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 9)
+    df1.loc[df["type"]== "180", "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 7)
+    df1.loc[((df["type"]== "120<") | (df["type"]== ">120")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 5)
+    df1.loc[((df["type"]== "90<") | (df["type"]== ">90")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"] ) * 3)
+    df1.loc[((df["type"]== "60<") | (df["type"]== ">60")),  "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"]) * 2)
+    df1.loc[df["type"]== ">150", "total"] =  ((df1["Su_Point"] + df1["Mo_Point"] + df1["Me_Point"] + df1["Ma_Point"] + df1["Ju_Point"] + df1["Ve_Point"] + df1["Sa_Point"] + df1["Ra_Point"] + df1["Ke_Point"]) * 7)
     return df1
 
-def graph_total_planets(PvsP_df):
-    df1 = PvsP_df.copy()
-    planets_list_graph = df1["planet"].to_list()
-    total_list_graph = df1["total"].to_list()
-    trace = go.Figure(
-        data=[
-            go.Bar(
-                name="Original",
+def p1_point_planets_planet_aspects(single_point_df):
+    df1 = single_point_df.copy()
+    Conj_list = []
+    lst_180 = []
+    lst_120lesser = []
+    lst_120greater = []
+    lst_90lesser = []
+    lst_90greater = []
+    lst_60lesser = []
+    lst_60greater = []
+    lst_150greater = []
+    for index, row in df1.iterrows():
+        if row.type == "Conj":
+            Conj_list.append(row.total)
+        if row.type == "180":
+            lst_180.append(row.total)
+        if row.type == "120<":
+            lst_120lesser.append(row.total)
+        if row.type == ">120":
+            lst_120greater.append(row.total)
+        if row.type == "90<":
+            lst_90lesser.append(row.total)
+        if row.type == ">90":
+            lst_90greater.append(row.total)
+        if row.type == "60<":
+            lst_60lesser.append(row.total)
+        if row.type == ">60":
+            lst_60greater.append(row.total)
+        if row.type == ">150":
+            lst_150greater.append(row.total)
+    for i in range(9):
+        lst_150greater.append(0)
 
-                x=planets_list_graph,
-                y=total_list_graph,
-                offsetgroup=0,
-            ),
-        ],
-        layout=go.Layout(
-            title="ASPECTS OF PERSON 1 OVER PLANETS OF PERSON 2",
-            yaxis_title="Values"
-        )
-    )
+    df = pd.DataFrame(columns=["Conj", "180", "120lesser", "120greater", "90lesser", "90greater", "60lesser", "60greater", "150greater"])
+    df["Conj"] = Conj_list
+    df["180"] = lst_180
+    df["120lesser"] = lst_120lesser
+    df["120greater"] = lst_120greater
+    df["90lesser"] = lst_90lesser
+    df["90greater"] = lst_90greater
+    df["60lesser"] = lst_60lesser
+    df["60greater"] = lst_60greater
+    df["150greater"] = lst_150greater
+    df['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"])
+    df['total'] = df["Conj"] + df["180"] + df["120lesser"] + df["120greater"] + df["90lesser"] + df["90greater"] + df["60lesser"] + df["60greater"] + df["150greater"]
+    df["consolidate"] = df["total"] * 0.5
+    return df
 
-    bar_div = opy.plot(trace, auto_open=False, output_type='div')
-    return bar_div
+def p1xp2_dm_data():
+    data = distance_multiplier.objects.all()
+    data = read_frame(data)
+    return data
 
-#main fuction triggers all the functions in form
-def p1vsp2_main(su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d, as_d, su_d2, mo_d2, me_d2, ma_d2, ju_d2, ve_d2, sa_d2, ra_d2, ke_d2, as_d2):
-    constants_start_and_end_limit = constants_limit_for_sign()
-    eve_person_one = event_person(constants_start_and_end_limit,  su_d, mo_d, me_d, ma_d, ju_d, ve_d, sa_d, ra_d, ke_d, as_d)
-    eve_person_two = event_person(constants_start_and_end_limit,  su_d2, mo_d2, me_d2, ma_d2, ju_d2, ve_d2, sa_d2, ra_d2, ke_d2, as_d2)
-    house_df = house_table(eve_person_one)
-    house_sign_df = house_and_sign(house_df)
-    sign_house_df = sign_and_house(house_sign_df)
-    sign_planet_house_df = sign_planet_and_house(eve_person_one, sign_house_df)
-    pasp_table_df = pasp_table_degs()
-    sign_table_df = sign_table_degs()
-    sep_degree_df = sep_degree_p1p2(eve_person_one, eve_person_two)
-    con_sign_planet_df = concatenation_sign_house(sign_planet_house_df, pasp_table_df, sign_table_df, eve_person_two)
-    single_concatenation_df = single_concatenation_table(sign_planet_house_df)
-    single_point_df = single_points_table(single_concatenation_df)
-    point_planet_aspects_df = point_planets_planet_aspects(single_point_df)
-    point_df = points_table(con_sign_planet_df, point_planet_aspects_df)
-    distance_df = distance_table(con_sign_planet_df, sep_degree_df)
-    PvsP_df = PvsP_table(point_df)
-    plot_div = graph_total_planets(PvsP_df)
-    eve_person_one = dataframe_to_dict(eve_person_one)
-    eve_person_two = dataframe_to_dict(eve_person_two)
-    house_df = dataframe_to_dict(house_df)
-    house_sign_df = dataframe_to_dict(house_sign_df)
-    sign_house_df = dataframe_to_dict(sign_house_df)
-    sign_planet_house_df = dataframe_to_dict(sign_planet_house_df)
-    con_sign_planet_df = dataframe_to_dict(con_sign_planet_df)
-    point_df = dataframe_to_dict(point_df)
-    distance_df = dataframe_to_dict(distance_df)
-    PvsP_df = dataframe_to_dict(PvsP_df)
-    main_dic = {"eve_person_one": eve_person_one, "eve_person_two": eve_person_two, "house_df": house_df,
-                "house_sign_df": house_sign_df, "sign_house_df": sign_house_df, "sign_planet_house_df": sign_planet_house_df,
-                "con_sign_planet_df": con_sign_planet_df, "point_df": point_df, "PvsP_df": PvsP_df, "plot_div": plot_div}
-    return main_dic
+def p1xp2_distance_between_planets(distance_df, dm_data_df):
+    df1 = distance_df.copy()
+    df2 = dm_data_df.copy()
+    Su_dp_lst = []
+    Mo_dp_lst = []
+    Me_dp_lst = []
+    Ma_dp_lst = []
+    Ju_dp_lst = []
+    Ve_dp_lst = []
+    Sa_dp_lst = []
+    Ra_dp_lst = []
+    Ke_dp_lst = []
+    As_dp_lst = []
+    dp_total_lst = []
+    for index, row in df1.iterrows():
+        if len(str(row.Su_Conc)) > 1:
+            try:
+                temp = (df2.loc[df2['distance'] == round(row.Su_Dis_lst,1)]["multiplier"].values[0])
+                Su_dp_lst.append(row.Su_Point * float(temp))
+            except Exception as e:
+                Su_dp_lst.append(0)
+        else:
+            Su_dp_lst.append(0)
+
+        if len(str(row.Mo_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Mo_Dis_lst, 1)]["multiplier"].values[0])
+            Mo_dp_lst.append(row.Mo_Point * float(temp))
+        else:
+            Mo_dp_lst.append(0)
+
+        if len(str(row.Me_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Me_Dis_lst, 1)]["multiplier"].values[0])
+            Me_dp_lst.append(row.Me_Point * float(temp))
+        else:
+            Me_dp_lst.append(0)
+
+        if len(str(row.Ma_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Ma_Dis_lst, 1)]["multiplier"].values[0])
+            Ma_dp_lst.append(row.Ma_Point * float(temp))
+        else:
+            Ma_dp_lst.append(0)
+
+        if len(str(row.Ju_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Ju_Dis_lst, 1)]["multiplier"].values[0])
+            Ju_dp_lst.append(row.Ju_Point * float(temp))
+        else:
+            Ju_dp_lst.append(0)
+
+        if len(str(row.Ve_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Ve_Dis_lst, 1)]["multiplier"].values[0])
+            Ve_dp_lst.append(row.Ve_Point * float(temp))
+        else:
+            Ve_dp_lst.append(0)
+
+        if len(str(row.Sa_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Sa_Dis_lst, 1)]["multiplier"].values[0])
+            Sa_dp_lst.append(row.Sa_Point * float(temp))
+        else:
+            Sa_dp_lst.append(0)
+
+        if len(str(row.Ra_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Ra_Dis_lst, 1)]["multiplier"].values[0])
+            Ra_dp_lst.append(row.Ra_Point * float(temp))
+        else:
+            Ra_dp_lst.append(0)
+
+        if len(str(row.Ke_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.Ke_Dis_lst, 1)]["multiplier"].values[0])
+            Ke_dp_lst.append(row.Ke_Point * float(temp))
+        else:
+            Ke_dp_lst.append(0)
+
+        if len(str(row.As_Conc)) > 1:
+            temp = (df2.loc[df2['distance'] == round(row.As_Dis_lst, 1)]["multiplier"].values[0])
+            As_dp_lst.append(row.As_Point * float(temp))
+        else:
+            As_dp_lst.append(0)
+    df = pd.DataFrame(columns=['type'])
+    type_list = ["Conj", "180", "120<", ">120", "90<", ">90", "60<", ">60"]
+    for i in type_list:
+        lst = list_to_list_of_lists([i for j in range(10)])
+        for k in lst:
+            df.loc[len(df)] = k
+    df.loc[len(df)] = [">150"]
+    df['planet'] = (["Su", "Mo", "Me", "Ma", "Ju", "Ve", "Sa", "Ra", "Ke", "As"] * (len(df) // 2 + 1))[:len(df)]
+    df.loc[df.type == ">150", "planet"] = "Ma"
+    if Su_dp_lst[-1] != 0:
+        Su_dp_lst[-1] = (Su_dp_lst[-1] * 1.5)
+    if Mo_dp_lst[-1] != 0:
+        Mo_dp_lst[-1] = (Mo_dp_lst[-1] * 1.5)
+    if Me_dp_lst[-1] != 0:
+        Me_dp_lst[-1] = (Me_dp_lst[-1] * 1.5)
+    if Ma_dp_lst[-1] != 0:
+        Ma_dp_lst[-1] = (Ma_dp_lst[-1] * 1.5)
+    if Ju_dp_lst[-1] != 0:
+        Ju_dp_lst[-1] = (Ju_dp_lst[-1] * 1.5)
+    if Ve_dp_lst[-1] != 0:
+        Ve_dp_lst[-1] = (Ve_dp_lst[-1] * 1.5)
+    if Sa_dp_lst[-1] != 0:
+        Sa_dp_lst[-1] = (Sa_dp_lst[-1] * 1.5)
+    if Ra_dp_lst[-1] != 0:
+        Ra_dp_lst[-1] = (Ra_dp_lst[-1] * 1.5)
+    if Ke_dp_lst[-1] != 0:
+        Ke_dp_lst[-1] = (Ke_dp_lst[-1] * 1.5)
+    if As_dp_lst[-1] != 0:
+        As_dp_lst = (As_dp_lst[-1] * 1.5)
+
+
+
+    df["Su_dp_lst"] = Su_dp_lst
+    df["Mo_dp_lst"] = Mo_dp_lst
+    df["Me_dp_lst"] = Me_dp_lst
+    df["Ma_dp_lst"] = Ma_dp_lst
+    df["Ju_dp_lst"] = Ju_dp_lst
+    df["Ve_dp_lst"] = Ve_dp_lst
+    df["Sa_dp_lst"] = Sa_dp_lst
+    df["Ra_dp_lst"] = Ra_dp_lst
+    df["Ke_dp_lst"] = Ke_dp_lst
+    df["As_dp_lst"] = As_dp_lst
+    for index, row in df.iterrows():
+        if row.type == "Conj":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst  + row.Ju_dp_lst
+                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst)*2)
+        if row.type == "180":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst) * 1.5)
+        if row.type == "120<":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst))
+        if row.type == ">120":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst))
+        if row.type == "90<":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst) * 0.7)
+        if row.type == ">90":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst)* 0.7)
+        if row.type == "60<":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst)* 0.4)
+        if row.type == ">60":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst)* 0.4)
+        if row.type == ">150":
+            dp_total_lst.append((row.Su_dp_lst + row.Mo_dp_lst + row.Me_dp_lst + row.Ma_dp_lst + row.Ju_dp_lst
+                                 + row.Ve_dp_lst + row.Sa_dp_lst + row.Ra_dp_lst + row.Ke_dp_lst + row.As_dp_lst)* 1.5)
+    df["dp_total_lst"] = dp_total_lst
+    return df

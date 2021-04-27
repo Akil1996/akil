@@ -1,12 +1,12 @@
 from django.shortcuts import render
 import json
 from django.shortcuts import render
-
 from .excelex import readdm
 from .p1conp2 import p1vsp2_main
 from .personone import p1main
 from .p1xp2exact import p1xp2ex_main
 from .ax_report import graph_main
+from .integrated_report import integrated_report_main
 
 
 degree_dic = {"p1_su_degree": 0, "p1_mo_degree": 0, "p1_me_degree": 0, "p1_ma_degree": 0, "p1_ju_degree": 0,
@@ -56,9 +56,6 @@ def ax_report_form(request):
     return render(request, "p2p/axhome.html", main_dic)
 
 
-def dataframe_to_dict(df):
-    json_records = df.reset_index().to_json(orient='records')
-    data = []
-    data = json.loads(json_records)
-    return data
-
+def ir_form(request):
+    main_dic = integrated_report_main(degree_dic["p1_su_degree"], degree_dic["p1_mo_degree"], degree_dic["p1_me_degree"], degree_dic["p1_ma_degree"], degree_dic["p1_ju_degree"], degree_dic["p1_ve_degree"], degree_dic["p1_sa_degree"], degree_dic["p1_ra_degree"], degree_dic["p1_ke_degree"], degree_dic["p1_as_degree"], degree_dic["p2_su_degree"], degree_dic["p2_mo_degree"], degree_dic["p2_me_degree"], degree_dic["p2_ma_degree"], degree_dic["p2_ju_degree"], degree_dic["p2_ve_degree"], degree_dic["p2_sa_degree"], degree_dic["p2_ra_degree"], degree_dic["p2_ke_degree"], degree_dic["p2_as_degree"])
+    return render(request, "p2p/ir_home.html", main_dic)
