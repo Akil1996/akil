@@ -7,6 +7,10 @@ from .personone import p1main
 from .p1xp2exact import p1xp2ex_main
 from .ax_report import graph_main
 from .integrated_report import integrated_report_main
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 
 
 degree_dic = {"p1_su_degree": 0, "p1_mo_degree": 0, "p1_me_degree": 0, "p1_ma_degree": 0, "p1_ju_degree": 0,
@@ -59,3 +63,27 @@ def ax_report_form(request):
 def ir_form(request):
     main_dic = integrated_report_main(degree_dic["p1_su_degree"], degree_dic["p1_mo_degree"], degree_dic["p1_me_degree"], degree_dic["p1_ma_degree"], degree_dic["p1_ju_degree"], degree_dic["p1_ve_degree"], degree_dic["p1_sa_degree"], degree_dic["p1_ra_degree"], degree_dic["p1_ke_degree"], degree_dic["p1_as_degree"], degree_dic["p2_su_degree"], degree_dic["p2_mo_degree"], degree_dic["p2_me_degree"], degree_dic["p2_ma_degree"], degree_dic["p2_ju_degree"], degree_dic["p2_ve_degree"], degree_dic["p2_sa_degree"], degree_dic["p2_ra_degree"], degree_dic["p2_ke_degree"], degree_dic["p2_as_degree"])
     return render(request, "p2p/ir_home.html", main_dic)
+
+
+def render_pdf_view(request):
+    template_path = "p2p/pdf1.html"
+    main_dic = integrated_report_main(degree_dic["p1_su_degree"], degree_dic["p1_mo_degree"],
+                                      degree_dic["p1_me_degree"], degree_dic["p1_ma_degree"],
+                                      degree_dic["p1_ju_degree"], degree_dic["p1_ve_degree"],
+                                      degree_dic["p1_sa_degree"], degree_dic["p1_ra_degree"],
+                                      degree_dic["p1_ke_degree"], degree_dic["p1_as_degree"],
+                                      degree_dic["p2_su_degree"], degree_dic["p2_mo_degree"],
+                                      degree_dic["p2_me_degree"], degree_dic["p2_ma_degree"],
+                                      degree_dic["p2_ju_degree"], degree_dic["p2_ve_degree"],
+                                      degree_dic["p2_sa_degree"], degree_dic["p2_ra_degree"],
+                                      degree_dic["p2_ke_degree"], degree_dic["p2_as_degree"])
+    context = main_dic
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="report.pdf"'
+    template = get_template(template_path)
+    html = template.render(context)
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response

@@ -362,27 +362,14 @@ tr:nth-child(even) {
 <body>
 
     <!-- NAVBAR START-->
-    <div class="brandlogo">
-        <a class="brandlogolink" href="#!">Logo</a>
-    </div>
-    <div class="navbarlogo">
-        <a class="navbarlogolink" href="#">.</a>
-        <a class="signupbutton" href="#news">SIGNUP</a>
-        <a class="signupbutton" href="#news">LOGIN</a>
-    </div>
+
     <div class="navbarmenu">
         <a class="navbarmenulink" href="{% url 'p2phome' %}">P1vsP1</a>
         <a class="navbarmenulink" href="{% url 'p1home' %}">P1 pxp</a>
         <a class="navbarmenulink" href="{% url 'p1xp2exform' %}">P1xP2 Exact</a>
         <a class="navbarmenulink" href="{% url 'axhome' %}">Ax Report</a>
-<!--        <div class="menudropdown">-->
-<!--            <button class="menudropbtn">Charts-->
-<!--                <i class="fa fa-caret-down"></i>-->
-<!--            </button>-->
-<!--            <div class="menudropdown-content">-->
-<!--                <a class="menudropdownlink" href="#">Person 2 Person</a>-->
-<!--            </div>-->
-<!--        </div>-->
+        <a class="navbarmenulink" href="{% url 'ir_form' %}">IR Report</a>
+<!--        <a class="navbarmenulink" href="{% url 'render_pdf' %}">PDF</a>-->
     </div>
     <!-- NAVBAR ENDS -->
 
@@ -404,8 +391,8 @@ tr:nth-child(even) {
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -418,8 +405,6 @@ tr:nth-child(even) {
         </div>
     </div>
 
-
-
     <div class="flex-container">
         <div class="flex-item-eventtable">
             <div align="center">
@@ -431,13 +416,13 @@ tr:nth-child(even) {
                         <th class="eventth"> Distance< </th>
                         <th class="eventth"> Point </th>
                     </tr>
-                    {% for i in df_greater120 %}
+                    {% for i in df_180 %}
                     <tr class="basictr">
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -445,10 +430,13 @@ tr:nth-child(even) {
         </div>
         <div class="flex-item-eventtable">
             {% autoescape off %}
-                {{ df_greater120_graph }}
+                {{ df_180_graph }}
             {% endautoescape %}
         </div>
     </div>
+
+
+
 
     <div class="flex-container">
         <div class="flex-item-eventtable">
@@ -466,8 +454,8 @@ tr:nth-child(even) {
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -479,8 +467,6 @@ tr:nth-child(even) {
             {% endautoescape %}
         </div>
     </div>
-
-
     <div class="flex-container">
         <div class="flex-item-eventtable">
             <div align="center">
@@ -492,13 +478,13 @@ tr:nth-child(even) {
                         <th class="eventth"> Distance< </th>
                         <th class="eventth"> Point </th>
                     </tr>
-                    {% for i in df_greater90 %}
+                    {% for i in df_greater120 %}
                     <tr class="basictr">
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -506,12 +492,10 @@ tr:nth-child(even) {
         </div>
         <div class="flex-item-eventtable">
             {% autoescape off %}
-                {{ df_greater90_graph }}
+                {{ df_greater120_graph }}
             {% endautoescape %}
         </div>
     </div>
-
-
     <div class="flex-container">
         <div class="flex-item-eventtable">
             <div align="center">
@@ -528,8 +512,8 @@ tr:nth-child(even) {
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -541,7 +525,6 @@ tr:nth-child(even) {
             {% endautoescape %}
         </div>
     </div>
-
     <div class="flex-container">
         <div class="flex-item-eventtable">
             <div align="center">
@@ -553,13 +536,13 @@ tr:nth-child(even) {
                         <th class="eventth"> Distance< </th>
                         <th class="eventth"> Point </th>
                     </tr>
-                    {% for i in df_greater60 %}
+                    {% for i in df_greater90 %}
                     <tr class="basictr">
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -567,10 +550,14 @@ tr:nth-child(even) {
         </div>
         <div class="flex-item-eventtable">
             {% autoescape off %}
-                {{ df_greater60_graph }}
+                {{ df_greater90_graph }}
             {% endautoescape %}
         </div>
     </div>
+
+
+
+
 
     <div class="flex-container">
         <div class="flex-item-eventtable">
@@ -588,8 +575,8 @@ tr:nth-child(even) {
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -598,6 +585,35 @@ tr:nth-child(even) {
         <div class="flex-item-eventtable">
             {% autoescape off %}
                 {{ df_lesser60_graph }}
+            {% endautoescape %}
+        </div>
+    </div>
+     <div class="flex-container">
+        <div class="flex-item-eventtable">
+            <div align="center">
+                <table class="eventtable">
+                    <tr>
+                        <th class="eventth">Type</th>
+                        <th class="eventth"> Planet </th>
+                        <th class="eventth"> Conca< </th>
+                        <th class="eventth"> Distance< </th>
+                        <th class="eventth"> Point </th>
+                    </tr>
+                    {% for i in df_greater60 %}
+                    <tr class="basictr">
+                        <td class="eventtd">{{i.type}}</td>
+                        <td class="eventtd">{{i.planet}}</td>
+                        <td class="eventtd">{{i.conca}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="flex-item-eventtable">
+            {% autoescape off %}
+                {{ df_greater60_graph }}
             {% endautoescape %}
         </div>
     </div>
@@ -619,8 +635,8 @@ tr:nth-child(even) {
                         <td class="eventtd">{{i.type}}</td>
                         <td class="eventtd">{{i.planet}}</td>
                         <td class="eventtd">{{i.conca}}</td>
-                        <td class="eventtd">{{i.distance}}</td>
-                        <td class="eventtd">{{i.point}}</td>
+                        <td class="eventtd">{{i.distance|floatformat:1}}</td>
+                        <td class="eventtd">{{i.point|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>

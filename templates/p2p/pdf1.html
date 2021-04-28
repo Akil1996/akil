@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Akil
+{% for i in df_lesser120 %}
+{{i.type}}
+{% endfor %}
+{% autoescape off %}
+{{ df_lesser120_graph }}
+{% endautoescape %}
+
+</body>
+</html>

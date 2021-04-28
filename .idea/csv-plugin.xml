@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/templates/p2p/ir_home.html">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

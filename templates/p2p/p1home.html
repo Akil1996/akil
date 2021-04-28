@@ -362,27 +362,14 @@ tr:nth-child(even) {
 <body>
 
     <!-- NAVBAR START-->
-    <div class="brandlogo">
-        <a class="brandlogolink" href="#!">Logo</a>
-    </div>
-    <div class="navbarlogo">
-        <a class="navbarlogolink" href="#">.</a>
-        <a class="signupbutton" href="#news">SIGNUP</a>
-        <a class="signupbutton" href="#news">LOGIN</a>
-    </div>
+
     <div class="navbarmenu">
         <a class="navbarmenulink" href="{% url 'p2phome' %}">P1vsP1</a>
         <a class="navbarmenulink" href="{% url 'p1home' %}">P1 pxp</a>
         <a class="navbarmenulink" href="{% url 'p1xp2exform' %}">P1xP2 Exact</a>
         <a class="navbarmenulink" href="{% url 'axhome' %}">Ax Report</a>
-<!--        <div class="menudropdown">-->
-<!--            <button class="menudropbtn">Charts-->
-<!--                <i class="fa fa-caret-down"></i>-->
-<!--            </button>-->
-<!--            <div class="menudropdown-content">-->
-<!--                <a class="menudropdownlink" href="#">Person 2 Person</a>-->
-<!--            </div>-->
-<!--        </div>-->
+        <a class="navbarmenulink" href="{% url 'ir_form' %}">IR Report</a>
+<!--        <a class="navbarmenulink" href="{% url 'render_pdf' %}">PDF</a>-->
     </div>
     <!-- NAVBAR ENDS -->
 
@@ -632,162 +619,162 @@ tr:nth-child(even) {
                         {% if i.type == "Conj" %}
                             <tr class="conjtr">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "180" %}
                             <tr class="tr180">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "120<" %}
                             <tr class="tr120l">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">120" %}
                             <tr class="tr120g">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "90<" %}
                             <tr class="tr90l">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">90" %}
                             <tr class="tr90g">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "60<" %}
                             <tr class="tr60l">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">60" %}
                             <tr class="tr60g">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">150" %}
                             <tr class="tr150g">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% else %}
                             <tr class="tr">
                                 <td class="housetd">{{i.type}}</td>
-                                <td class="housetd">{{i.Su_Point}}</td>
-                                <td class="housetd">{{i.Mo_Point}}</td>
-                                <td class="housetd">{{i.Me_Point}}</td>
-                                <td class="housetd">{{i.Ma_Point}}</td>
-                                <td class="housetd">{{i.Ju_Point}}</td>
-                                <td class="housetd">{{i.Ve_Point}}</td>
-                                <td class="housetd">{{i.Sa_Point}}</td>
-                                <td class="housetd">{{i.Ra_Point}}</td>
-                                <td class="housetd">{{i.Ke_Point}}</td>
-                                <td class="housetd">{{i.As_Point}}</td>
+                                <td class="housetd">{{i.Su_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Mo_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Me_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ma_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ju_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ve_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Sa_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ra_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.Ke_Point|floatformat:1}}</td>
+                                <td class="housetd">{{i.As_Point|floatformat:1}}</td>
                                 <td class="housetd">{{i.planet}}</td>
-                                <td class="housetd">{{i.total}}</td>
+                                <td class="housetd">{{i.total|floatformat:1}}</td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -815,17 +802,17 @@ tr:nth-child(even) {
                     </tr>
                     {% for i in point_planet_aspects_df %}
                     <tr class="basictr">
-                        <td class="eventtd">{{i.Conj}}</td>
-                        <td class="eventtd">{{i.180}}</td>
-                        <td class="eventtd">{{i.150greater}}</td>
-                        <td class="eventtd">{{i.120lesser}}</td>
-                        <td class="eventtd">{{i.120greater}}</td>
-                        <td class="eventtd">{{i.90lesser }}</td>
-                        <td class="eventtd">{{i.90greater}}</td>
-                        <td class="eventtd">{{i.60lesser}}</td>
-                        <td class="eventtd">{{i.60greater}}</td>
-                        <td class="eventtd">{{i.total}}</td>
-                        <td class="eventtd">{{i.consolidate}}</td>
+                        <td class="eventtd">{{i.Conj|floatformat:1}}</td>
+                        <td class="eventtd">{{i.180|floatformat:1}}</td>
+                        <td class="eventtd">{{i.150greater|floatformat:1}}</td>
+                        <td class="eventtd">{{i.120lesser|floatformat:1}}</td>
+                        <td class="eventtd">{{i.120greater|floatformat:1}}</td>
+                        <td class="eventtd">{{i.90lesser |floatformat:1}}</td>
+                        <td class="eventtd">{{i.90greater|floatformat:1}}</td>
+                        <td class="eventtd">{{i.60lesser|floatformat:1}}</td>
+                        <td class="eventtd">{{i.60greater|floatformat:1}}</td>
+                        <td class="eventtd">{{i.total|floatformat:1}}</td>
+                        <td class="eventtd">{{i.consolidate|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>

@@ -7,4 +7,5 @@ urlpatterns = [
     path("p1xp2exform/", views.p1xp2exactform, name="p1xp2exform"),
     path("axreportform/", views.ax_report_form, name="axhome"),
     path("irform/", views.ir_form, name="ir_form"),
+    path("pdfrender/", views.render_pdf_view, name="render_pdf")
 ]

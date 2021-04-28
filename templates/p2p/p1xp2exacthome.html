@@ -421,27 +421,14 @@ tr:nth-child(even) {
 </style>
 <body>
     <!-- NAVBAR START-->
-    <div class="brandlogo">
-        <a class="brandlogolink" href="#!">Logo</a>
-    </div>
-    <div class="navbarlogo">
-        <a class="navbarlogolink" href="#">.</a>
-        <a class="signupbutton" href="#news">SIGNUP</a>
-        <a class="signupbutton" href="#news">LOGIN</a>
-    </div>
+
     <div class="navbarmenu">
         <a class="navbarmenulink" href="{% url 'p2phome' %}">P1vsP1</a>
         <a class="navbarmenulink" href="{% url 'p1home' %}">P1 pxp</a>
         <a class="navbarmenulink" href="{% url 'p1xp2exform' %}">P1xP2 Exact</a>
         <a class="navbarmenulink" href="{% url 'axhome' %}">Ax Report</a>
-<!--        <div class="menudropdown">-->
-<!--            <button class="menudropbtn">Charts-->
-<!--                <i class="fa fa-caret-down"></i>-->
-<!--            </button>-->
-<!--            <div class="menudropdown-content">-->
-<!--                <a class="menudropdownlink" href="#">Person 2 Person</a>-->
-<!--            </div>-->
-<!--        </div>-->
+        <a class="navbarmenulink" href="{% url 'ir_form' %}">IR Report</a>
+<!--        <a class="navbarmenulink" href="{% url 'render_pdf' %}">PDF</a>-->
     </div>
     <!-- NAVBAR ENDS -->
     <h2 class="titleh2">PERSON 1 X PERSON EXACT</h2>
@@ -701,151 +688,151 @@ tr:nth-child(even) {
                             <tr class="conjtr">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "180" %}
                             <tr class="tr180">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "120<" %}
                             <tr class="tr120l">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">120" %}
                             <tr class="tr120g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "90<" %}
                             <tr class="tr90l">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">90" %}
                             <tr class="tr90g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "60<" %}
                             <tr class="tr60l">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">60" %}
                             <tr class="tr60g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">150" %}
                             <tr class="tr150g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% else %}
                             <tr class="tr">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Mo_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Me_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ma_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ju_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ve_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Sa_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ra_Dis_lst}}</td>
-                                <td class="constanttd">{{i.Ke_Dis_lst}}</td>
-                                <td class="constanttd">{{i.As_Dis_lst}}</td>
+                                <td class="constanttd">{{i.Su_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_Dis_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_Dis_lst|floatformat:1}}</td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -878,161 +865,161 @@ tr:nth-child(even) {
                             <tr class="conjtr">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "180" %}
                             <tr class="tr180">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "120<" %}
                             <tr class="tr120l">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">120" %}
                             <tr class="tr120g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "90<" %}
                             <tr class="tr90l">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">90" %}
                             <tr class="tr90g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == "60<" %}
                             <tr class="tr60l">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">60" %}
                             <tr class="tr60g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% elif i.type == ">150" %}
                             <tr class="tr150g">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% else %}
                             <tr class="tr">
                                 <td class="constanttd">{{i.type}}</td>
                                 <td class="constanttd">{{i.planet}}</td>
-                                <td class="constanttd">{{i.Su_dp_lst}}</td>
-                                <td class="constanttd">{{i.Mo_dp_lst}}</td>
-                                <td class="constanttd">{{i.Me_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ma_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ju_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ve_dp_lst}}</td>
-                                <td class="constanttd">{{i.Sa_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ra_dp_lst}}</td>
-                                <td class="constanttd">{{i.Ke_dp_lst}}</td>
-                                <td class="constanttd">{{i.As_dp_lst}}</td>
-                                <td class="constanttd">{{i.dp_total_lst}}</td>
+                                <td class="constanttd">{{i.Su_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Mo_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Me_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ma_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ju_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ve_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Sa_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ra_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.Ke_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.As_dp_lst|floatformat:1}}</td>
+                                <td class="constanttd">{{i.dp_total_lst|floatformat:1}}</td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -1054,8 +1041,8 @@ tr:nth-child(even) {
                     {% for i in p1p2recibe_df %}
                     <tr class="basictr">
                         <td class="eventtd">{{i.planet}}</td>
-                        <td class="eventtd">{{i.P2_Recibe_a}}</td>
-                        <td class="eventtd">{{i.P2_Recibe_b}}</td>
+                        <td class="eventtd">{{i.P2_Recibe_a|floatformat:1}}</td>
+                        <td class="eventtd">{{i.P2_Recibe_b|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -1072,7 +1059,7 @@ tr:nth-child(even) {
                     {% for i in interaccion_df %}
                     <tr class="basictr">
                         <td class="eventtd">{{i.INTERACCIÓN}}</td>
-                        <td class="eventtd">{{i.puntaje}}</td>
+                        <td class="eventtd">{{i.puntaje|floatformat:1}}</td>
                     </tr>
                     {% endfor %}
                 </table>
